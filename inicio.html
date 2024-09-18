@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - Plataforma de Videojuegos</title>
     <link rel="stylesheet" href="inicio.css">
+    <link rel="stylesheet" href="chat.css">
 </head>
 <body>
     <!-- Menú de navegación -->
@@ -14,7 +15,7 @@
                 <a href="inicio.html" class="logo">Everdwell</a>
                 <ul class="nav-links">
                     <li><a href="inicio.html">Inicio</a></li>
-                    <li><a href="#">Cursos</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
                     <li><a href="#">Ofertas</a></li>
                     <li><a href="#">Contacto</a></li>
                     <li><a href="perfil.html">Perfil</a></li>
@@ -39,7 +40,7 @@
                         <h3>Curso de League of Legends</h3>
                         <p>Aprende desde lo básico hasta técnicas avanzadas para dominar LoL.</p>
                         <span class="price">$49.99</span>
-                        <button>Comprar ahora</button>
+                          <a href="curso.html" class="btn-comprar">Comprar ahora</a>
                     </div>
                 </div>
 
@@ -49,7 +50,7 @@
                         <h3>Curso de Valorant</h3>
                         <p>Mejora tus habilidades en Valorant con estrategias y tácticas profesionales.</p>
                         <span class="price">$39.99</span>
-                        <button>Comprar ahora</button>
+                        <a href="curso.html" class="btn-comprar">Comprar ahora</a>
                     </div>
                 </div>
 
@@ -59,7 +60,7 @@
                         <h3>Curso de Fortnite</h3>
                         <p>Domina Fortnite con técnicas de construcción y juego en equipo.</p>
                         <span class="price">$29.99</span>
-                        <button>Comprar ahora</button>
+                          <a href="curso.html" class="btn-comprar">Comprar ahora</a>
                     </div>
                 </div>
                 
@@ -67,6 +68,37 @@
             </div>
         </div>
     </main>
+    <div class="chat-window" id="chat-window">
+        <div class="chat-body" id="chat-body">
+            <div class="chat-header" id="chat-header">
+                Chat con <span id="chat-username">Selecciona un usuario</span>
+                <span id="chat-toggle">-</span>
+            </div>
+            <div class="messages" id="messages">
+                <!-- Los mensajes aparecerán aquí -->
+            </div>
+            <form id="chat-form">
+                <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." autocomplete="off">
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <!-- Lista de usuarios a la derecha -->
+        <div class="chat-users" id="chat-users">
+            <div class="users-header" id="users-header">
+                <h3>Usuarios</h3>
+                <span id="users-toggle">-</span>
+            </div>
+            <ul id="user-list">
+                <li><button class="user-btn" data-username="Juan">Juan</button></li>
+                <li><button class="user-btn" data-username="María">María</button></li>
+                <li><button class="user-btn" data-username="Carlos">Carlos</button></li>
+                <li><button class="user-btn" data-username="Ana">Ana</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
 
     <!-- Pie de página -->
     <footer>

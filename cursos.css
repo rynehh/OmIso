@@ -1,0 +1,164 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #141e30;
+    color: white;
+    padding: 15px 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #28a745;
+}
+
+/* Categoría desplegable */
+.categoria {
+    position: relative;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.categoria-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.categoria:hover .dropdown-content {
+    display: block;
+}
+
+.btn-etiqueta {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.btn-etiqueta:hover {
+    background-color: #0056b3;
+}
+
+/* Barra de búsqueda */
+.busqueda input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Contenedor de cursos */
+#cursos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.curso-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.curso-card h3 {
+    margin-bottom: 10px;
+}
+
+.curso-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+.curso-card .precio {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Botones de Comprar y Ver */
+.btn-accion {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-accion.comprar {
+    background-color: #007bff;
+}
+
+.btn-accion.ver {
+    background-color: #28a745;
+}
+
+.btn-accion:hover {
+    opacity: 0.9;
+}

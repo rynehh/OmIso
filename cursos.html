@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Cursos</title>
+    <link rel="stylesheet" href="cursos.css">
+</head>
+<body>
+    <!-- Header con navegación -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="inicio.html" class="logo">Everdwell</a>
+                <ul class="nav-links">
+                    <li><a href="inicio.html">Inicio</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenedor principal de búsqueda y resultados -->
+    <main>
+        <div class="container">
+            <h1>Buscar Cursos</h1>
+            
+            <!-- Barra de búsqueda -->
+            <div class="busqueda">
+                <input type="text" id="buscar" placeholder="Buscar curso..." onkeyup="buscarCurso()">
+            </div>
+
+            <!-- Categoría (desplegable) -->
+            <div class="categoria">
+                <button class="categoria-btn">Categoría</button>
+                <div class="dropdown-content">
+                    <button class="btn-etiqueta" onclick="filtrarPorEtiqueta('estrategia')">Estrategia</button>
+                    <button class="btn-etiqueta" onclick="filtrarPorEtiqueta('accion')">Acción</button>
+                    <button class="btn-etiqueta" onclick="filtrarPorEtiqueta('aventura')">Aventura</button>
+                    <button class="btn-etiqueta" onclick="filtrarPorEtiqueta('rpg')">RPG</button>
+                    <button class="btn-etiqueta" onclick="filtrarPorEtiqueta('deportes')">Deportes</button>
+                </div>
+            </div>
+
+            <!-- Lista de cursos -->
+            <div id="cursos-container">
+                <!-- Los cursos aparecerán aquí -->
+            </div>
+        </div>
+    </main>
+
+    <script src="cursos.js"></script>
+</body>
+</html>

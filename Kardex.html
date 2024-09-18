@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil - Plataforma de Videojuegos</title>
-    <link rel="stylesheet" href="perfil.css">
+    <title>Kardex - Plataforma de Videojuegos</title>
+    <link rel="stylesheet" href="Kardex.css">
     <link rel="stylesheet" href="chat.css">
 </head>
 <body>
+    <!-- Menú de navegación -->
     <header>
         <nav class="navbar">
             <div class="container">
                 <a href="inicio.html" class="logo">Everdwell</a>
                 <ul class="nav-links">
                     <li><a href="inicio.html">Inicio</a></li>
-                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="courses.html">Cursos</a></li>
                     <li><a href="#">Ofertas</a></li>
-                    <li><a href="#">Contacto</a></li>
                     <li><a href="perfil.html">Perfil</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
+    <!-- Contenedor principal -->
     <main class="profile-container">
         <div class="sidebar">
             <ul>
@@ -31,13 +32,45 @@
             </ul>
         </div>
 
-        <div class="profile-content">
-            <h1>Tu Perfil</h1>
-            <p>Bienvenido, Juan Pablo </p>
-            <p>Aquí puedes ver y gestionar tus cursos y acceder a tu información personal.</p>
+        <div class="Kardex-content">
+            <h1>Kardex</h1>
+            <table id="kardex-table">
+                <thead>
+                    <tr>
+                        <th>Curso</th>
+                        <th>Nivel</th>
+                        <th>Última Conexión</th>
+                        <th>Estado</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha de Término</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LOL</td>
+                        <td>3</td>
+                        <td>2024-09-15</td>
+                        <td>En Curso</td>
+                        <td>2024-08-01</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>VALORANT</td>
+                        <td>5</td>
+                        <td>2024-09-12</td>
+                        <td>Completado</td>
+                        <td>2024-03-15</td>
+                        <td>2024-08-30</td>
+                        <td><a href="#" class="btn-certificado" onclick="abrirCertificado()">Ver Certificado</a></td>
+
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </main>
- <div class="chat-window" id="chat-window">
+
+    <!-- Sección del chat -->
+    <div class="chat-window" id="chat-window">
         <div class="chat-body" id="chat-body">
             <div class="chat-header" id="chat-header">
                 Chat con <span id="chat-username">Selecciona un usuario</span>
@@ -52,7 +85,7 @@
             </form>
         </div>
 
-        <!-- Lista de usuarios a la derecha -->
+        <!-- Lista de usuarios en el chat -->
         <div class="chat-users" id="chat-users">
             <div class="users-header" id="users-header">
                 <h3>Usuarios</h3>
@@ -67,12 +100,14 @@
         </div>
     </div>
 
-    <script src="chat.js"></script>
+    <!-- Pie de página -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Everdwell. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script src="chat.js"></script>
+    <script src="Kardex.js"></script>
 </body>
 </html>
-

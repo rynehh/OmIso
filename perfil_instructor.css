@@ -1,0 +1,190 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Menú de navegación */
+header {
+    background-color: #141e30;
+    color: #fff;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.nav-links a:hover {
+    color: #28a745;
+    transform: scale(1.1);
+}
+
+/* Contenedor principal */
+.profile-container {
+    display: flex;
+    padding-top: 70px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 70px;
+    left: 0;
+}
+
+.sidebar h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    color: #141e30;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+/* Botones de cursos */
+.btn-curso {
+    display: block;
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    text-align: left;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-curso:hover {
+    background-color: #218838;
+    transform: scale(1.02);
+}
+
+/* Botón para dar de alta un nuevo curso */
+.btn-alta-curso {
+    display: block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-alta-curso:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Botones de alumnos */
+.btn-alumno {
+    display: block;
+    width: 100%;
+    background-color: #6c757d;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: left;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-alumno:hover {
+    background-color: #5a6268;
+    transform: scale(1.02);
+}
+
+/* Contenido principal */
+.profile-content {
+    margin-left: 270px;
+    padding: 20px;
+    width: 100%;
+}
+
+.profile-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.profile-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.detalles-curso, .detalles-alumno {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.detalles-curso h2, .detalles-alumno h3 {
+    margin-bottom: 10px;
+}
+
+.detalles-curso ul {
+    list-style-type: none;
+}
+
+.detalles-curso ul li {
+    padding: 5px 0;
+}

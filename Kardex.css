@@ -17,7 +17,6 @@ body {
 }
 
 /* Menú de navegación */
-/* Menú de navegación */
 header {
     background-color: #141e30;
     color: #fff;
@@ -100,25 +99,45 @@ header {
     color: #28a745;
 }
 
-/* Perfil */
-.profile-content {
+/* Contenido principal del Kardex */
+.Kardex-content {
     margin-left: 270px;
     padding: 20px;
     width: 100%;
 }
 
-.profile-content h1 {
+.Kardex-content h1 {
     font-size: 2.5em;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     animation: fadeIn 1s ease-out;
 }
 
-.profile-content p {
-    font-size: 1.2em;
-    margin-bottom: 40px;
+#kardex-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
 }
 
-/* Footer */
+#kardex-table th, #kardex-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#kardex-table th {
+    background-color: #141e30;
+    color: #fff;
+}
+
+#kardex-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#kardex-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Pie de página */
 footer {
     background-color: #141e30;
     color: #fff;
@@ -138,5 +157,25 @@ footer {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Responsividad de la tabla */
+@media (max-width: 768px) {
+    #kardex-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* Responsividad del chat */
+@media (max-width: 768px) {
+    .chat-window {
+        flex-direction: column;
+    }
+
+    .chat-users {
+        display: none;
     }
 }

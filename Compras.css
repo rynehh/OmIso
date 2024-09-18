@@ -17,7 +17,6 @@ body {
 }
 
 /* Menú de navegación */
-/* Menú de navegación */
 header {
     background-color: #141e30;
     color: #fff;
@@ -100,25 +99,62 @@ header {
     color: #28a745;
 }
 
-/* Perfil */
-.profile-content {
+/* Contenido principal de las Compras */
+.Compras-content {
     margin-left: 270px;
     padding: 20px;
     width: 100%;
 }
 
-.profile-content h1 {
+.Compras-content h1 {
     font-size: 2.5em;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     animation: fadeIn 1s ease-out;
 }
 
-.profile-content p {
-    font-size: 1.2em;
-    margin-bottom: 40px;
+#compras-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
 }
 
-/* Footer */
+#compras-table th, #compras-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#compras-table th {
+    background-color: #141e30;
+    color: #fff;
+}
+
+#compras-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#compras-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilos para los botones de curso */
+#compras-table td a {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#compras-table td a:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Pie de página */
 footer {
     background-color: #141e30;
     color: #fff;
@@ -138,5 +174,14 @@ footer {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Responsividad de la tabla */
+@media (max-width: 768px) {
+    #compras-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
     }
 }

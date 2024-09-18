@@ -1,0 +1,216 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Menú de navegación */
+header {
+    background-color: #141e30;
+    color: #fff;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+/* Estilo del Chat */
+.chat-window {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.chat-users {
+    width: 30%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-left: 1px solid #ccc;
+}
+
+.users-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.chat-users h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.chat-users ul {
+    list-style: none;
+    padding: 0;
+}
+
+.chat-users li {
+    margin-bottom: 10px;
+}
+
+.user-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.user-btn:hover {
+    background-color: #218838;
+}
+
+/* Cuerpo del chat */
+.chat-body {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    background-color: #141e30;
+    color: #fff;
+    padding: 10px;
+    font-size: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.chat-header span {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.messages {
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.message {
+    margin-bottom: 5px;
+}
+
+.message span {
+    display: block;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Minimizado estilo barra pequeña */
+.chat-users.minimized {
+    width: 30px;
+    padding: 0;
+}
+
+.chat-users.minimized .users-header h3,
+.chat-users.minimized ul {
+    display: none;
+}
+
+.chat-users.minimized .users-header span {
+    margin: auto;
+}
+
+.chat-body.minimized {
+    height: 40px;
+    overflow: hidden;
+}
+
+.chat-body.minimized .messages,
+.chat-body.minimized form {
+    display: none;
+}
+
+.chat-header {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Mantener visible la barra minimizada */
+.chat-users.minimized .users-header {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
