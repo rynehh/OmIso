@@ -6,3 +6,8 @@ function toggleContent(id) {
         content.style.display = "block";
     }
 }
+
+function eliminarComentario(commentId) {
+    const commentElement = document.getElementById(commentId);
+    commentElement.innerHTML = '<p><em>Este comentario fue eliminado</em></p>';
+}
