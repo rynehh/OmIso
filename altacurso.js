@@ -75,15 +75,15 @@ document.getElementById('nuevoCursoForm').addEventListener('submit', function(ev
 document.getElementById('nuevoCursoForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
-    // Aquí puedes agregar la lógica para guardar el curso si es necesario
+    
     console.log("Curso guardado.");
 
-    // Redirigir al perfil de instructor después de guardar
+    
     window.location.href = 'perfil_instructor.html';
 });
 
 // Manejar el evento del botón "Cancelar"
 document.getElementById('btnCancelar').addEventListener('click', function() {
-    // Redirigir al perfil de instructor al hacer clic en Cancelar
+    
     window.location.href = 'perfil_instructor.html';
 });

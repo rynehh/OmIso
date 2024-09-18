@@ -1,0 +1,39 @@
+/* Estilos para la tabla de usuarios deshabilitados */
+#usuarios-deshabilitados-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#usuarios-deshabilitados-table th, #usuarios-deshabilitados-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#usuarios-deshabilitados-table th {
+    background-color: #141e30;
+    color: #fff;
+}
+
+#usuarios-deshabilitados-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#usuarios-deshabilitados-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.habilitar-btn {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.habilitar-btn:hover {
+    background-color: #218838;
+}
