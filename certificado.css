@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+}
+
+.certificate {
+    width: 800px;
+    height: 600px;
+    background-color: #ffffff;
+    border: 5px solid 	#b181ff;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    
+}
+
+.header {
+    margin-bottom: 40px;
+}
+
+.logo {
+    width: 100px;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #6d33b4;
+}
+
+.content h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #660066;
+}
+
+.content p {
+    font-size: 20px;
+    color: #333;
+}
+
+.footer {
+    margin-top: 60px;
+}
+
+.footer p {
+    font-size: 20px;
+    color: #333;
+}
+
+.footer strong {
+    font-size: 24px;
+    color: #6d33b4;
+}
