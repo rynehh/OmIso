@@ -12,7 +12,12 @@ function agregarNiveles() {
     nivelDiv.classList.add('nivel');
 
     nivelDiv.innerHTML = `
+        
         <h4>Nivel ${nivelCount + 1}</h4>
+        <label for="nivel${nivelCount + 1}" class="form-label">Nivel</label>
+        <input type="text" class="form-control" id="nivel${nivelCount + 1}" placeholder="Título del Nivel">
+
+
         <label for="videoNivel${nivelCount + 1}" class="form-label">Video</label>
         <input type="file" class="form-control" id="videoNivel${nivelCount + 1}">
         
@@ -82,20 +87,3 @@ document.getElementById('btnCancelar').addEventListener('click', function() {
     // Redirigir al perfil de instructor al hacer clic en Cancelar
     window.location.href = 'perfil_instructor.html';
 });
-
-// Función para agregar niveles dinámicos (ejemplo si se necesita)
-function agregarNiveles() {
-    const nivelesContainer = document.getElementById('nivelesContainer');
-    const numeroDeNiveles = document.getElementById('niveles');
-    
-    // Incrementar el número de niveles y agregar un nuevo nivel al contenedor
-    const nuevoNivel = document.createElement('div');
-    nuevoNivel.classList.add('mb-3');
-    nuevoNivel.innerHTML = `
-        <label for="nivel${numeroDeNiveles.value}" class="form-label">Nivel ${parseInt(numeroDeNiveles.value) + 1}</label>
-        <input type="text" class="form-control" id="nivel${numeroDeNiveles.value}" placeholder="Título del Nivel">
-    `;
-    
-    nivelesContainer.appendChild(nuevoNivel);
-    numeroDeNiveles.value = parseInt(numeroDeNiveles.value) + 1;
-}
