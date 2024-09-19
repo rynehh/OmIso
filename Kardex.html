@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="inicio.html" class="logo">Everdwell</a>
+                <a href="inicio.html" class="logo">OmIso</a>
                 <ul class="nav-links">
                     <li><a href="inicio.html">Inicio</a></li>
                     <li><a href="courses.html">Cursos</a></li>
@@ -24,13 +24,19 @@
     </header>
 
     <!-- Contenedor principal -->
+
+      
+
     <main class="profile-container">
+
+
         <div class="sidebar">
             <ul>
                 <li><a href="Kardex.html">Kardex</a></li>
                 <li><a href="Compras.html">Cursos Comprados</a></li>
             </ul>
         </div>
+    
 
         <div class="Kardex-content">
             <h1>Kardex</h1>
@@ -69,6 +75,43 @@
         </div>
     </main>
 
+      <!-- Filtros para el Kardex -->
+      <div class="filtros-kardex">
+        <!-- Filtro por rango de fechas -->
+        <div class="filtro-fechas">
+            <label for="fechaInicio">Desde:</label>
+            <input type="date" id="fechaInicio" class="form-control">
+        
+            <label for="fechaFin">Hasta:</label>
+            <input type="date" id="fechaFin" class="form-control">
+        
+            <button class="btn-filtrar" onclick="filtrarPorFecha()">Filtrar por Fecha</button>
+        </div>
+    
+        <!-- Filtro por categoría -->
+        <div class="filtro-categoria">
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" class="form-control">
+                <option value="todos">Todas las Categorías</option>
+                <option value="estrategia">Estrategia</option>
+                <option value="accion">Acción</option>
+                <option value="aventura">Aventura</option>
+            </select>
+            <button class="btn-filtrar" onclick="filtrarPorCategoria()">Filtrar por Categoría</button>
+        </div>
+    
+        <!-- Filtro por estado (completado o en curso) -->
+        <div class="filtro-estado">
+            <label for="estadoCurso">Estado del Curso:</label>
+            <select id="estadoCurso" class="form-control">
+                <option value="todos">Todos los Cursos</option>
+                <option value="completado">Completado</option>
+                <option value="en curso">En Curso</option>
+            </select>
+            <button class="btn-filtrar" onclick="filtrarPorEstado()">Filtrar por Estado</button>
+        </div>
+    </div>
+
     <!-- Sección del chat -->
     <div class="chat-window" id="chat-window">
         <div class="chat-body" id="chat-body">
@@ -103,7 +146,7 @@
     <!-- Pie de página -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Everdwell. Todos los derechos reservados.</p>
+            <p>&copy; 2024 OmIso. Todos los derechos reservados.</p>
         </div>
     </footer>
 

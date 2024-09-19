@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="inicio.html" class="logo">Everdwell</a>
+                <a href="inicio.html" class="logo">OmIso</a>
                 <ul class="nav-links">
                     <li><a href="inicio.html">Inicio</a></li>
                     <li><a href="perfil.html">Perfil</a></li>
@@ -44,6 +44,36 @@
                     <button class="btn-etiqueta" onclick="filtrarPorEtiqueta('deportes')">Deportes</button>
                 </div>
             </div>
+
+            <div class="filtro-fechas">
+                <button class="fecha-btn">Filtrar por fecha</button>
+                <div class="dropdown-content-fecha">
+                    <label for="fechaInicio">Desde:</label>
+                    <input type="date" id="fechaInicio">
+                    
+                    <label for="fechaFin">Hasta:</label>
+                    <input type="date" id="fechaFin">
+                    
+                    <button class="btn-filtrar-fecha" onclick="filtrarPorFecha()">Aplicar Filtro</button>
+                </div>
+            </div>
+
+            <!-- Filtro por instructor -->
+            <div class="filtro-instructor">
+                <button class="instructor-btn">Filtrar por instructor</button>
+                <div class="dropdown-content-instructor">
+                    <label for="instructor">Seleccionar instructor:</label>
+                    <select id="instructor" class="form-control">
+                        <option value="" disabled selected>Selecciona un instructor</option>
+                        <option value="John Doe">John Doe</option>
+                        <option value="Jane Smith">Jane Smith</option>
+                        <option value="Carlos Pérez">Carlos Pérez</option>
+                        <option value="Juan García">Juan García</option>
+                    </select>
+                    <button class="btn-filtrar-instructor" onclick="filtrarPorInstructor()">Aplicar Filtro</button>
+                </div>
+            </div>
+            
 
             <!-- Lista de cursos -->
             <div id="cursos-container">

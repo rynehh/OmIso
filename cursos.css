@@ -162,3 +162,92 @@ header {
 .btn-accion:hover {
     opacity: 0.9;
 }
+
+/* Filtro por fecha */
+.filtro-fechas {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.fecha-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-content-fecha {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.filtro-fechas:hover .dropdown-content-fecha {
+    display: block;
+}
+
+.btn-filtrar-fecha {
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-filtrar-fecha:hover {
+    background-color: #218838;
+}
+
+/* Filtro por instructor */
+.filtro-instructor {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.instructor-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-content-instructor {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.filtro-instructor:hover .dropdown-content-instructor {
+    display: block;
+}
+
+.btn-filtrar-instructor {
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-filtrar-instructor:hover {
+    background-color: #218838;
+}
+

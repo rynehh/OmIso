@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    margin-top: 60px;
 }
 
 /* Contenedor del login y registro */
@@ -73,6 +73,16 @@ input[type="text"], input[type="email"], input[type="password"] {
     font-size: 1em;
 }
 
+select, input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+
 button {
     width: 100%;
     padding: 12px;
@@ -129,3 +139,5 @@ button:focus {
     object-fit: contain;
     border-radius: 10px;
 }
+
+

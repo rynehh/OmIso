@@ -19,7 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMessage.style.display = 'none';
             // Aquí puedes agregar la lógica para enviar los datos del formulario
             // Por ejemplo, usar fetch para enviar los datos a un servidor
-            alert('Formulario enviado con éxito');
+            alert('Sesion Iniciada');
+            document.getElementById('btnini').addEventListener('click', function() {
+    
+                window.location.href = 'inicio.html';
+            });
         }
     });
 });

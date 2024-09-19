@@ -179,3 +179,35 @@ footer {
         display: none;
     }
 }
+
+
+.filtros-kardex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filtro-fechas, .filtro-categoria, .filtro-estado {
+    display: inline-block;
+}
+
+.btn-filtrar {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.btn-filtrar:hover {
+    background-color: #218838;
+}
+
+.filtros-kardex select, .filtros-kardex input {
+    margin-right: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
