@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Sesion Iniciada');
             document.getElementById('btnini').addEventListener('click', function() {
     
-                window.location.href = 'inicio.html';
+                window.location.href = 'inicio.php';
             });
         }
     });

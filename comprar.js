@@ -44,5 +44,5 @@ document.getElementById('compra-form').addEventListener('submit', function(event
 
     // Si todas las validaciones pasan, se procesa el pago
     alert("Pago procesado correctamente. Redirigiendo al curso...");
-    window.location.href = "CursoCom.html"; 
+    window.location.href = "CursoCom.php"; 
 });

@@ -12,15 +12,15 @@
     <header>
         <nav class="navbar">
             <div class="container-header">
-                <a href="inicio.html" class="logo">OmIso</a>
+                <a href="inicio.php" class="logo">OmIso</a>
                 <ul class="nav-links">
-                    <li><a href="inicio.html">Inicio</a></li>
-                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="inicio.php">Inicio</a></li>
+                    <li><a href="cursos.php">Cursos</a></li>
                     <li><a href="#">Ofertas</a></li>
                     <li><a href="#">Contacto</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
-                    <li><a href="login.html">Iniciar sesión</a></li>
-                    <li><a href="registro.html">Registrarse</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
+                    <li><a href="login.php">Iniciar sesión</a></li>
+                    <li><a href="registro.php">Registrarse</a></li>
                 </ul>
             </div>
         </nav>

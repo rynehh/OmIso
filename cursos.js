@@ -33,9 +33,9 @@ function mostrarTodosLosCursos() {
 
 function obtenerBotonAccion(accion) {
     if (accion === 'comprar') {
-        return `<a href="curso.html" class="btn-accion comprar">Comprar</a>`;
+        return `<a href="curso.php" class="btn-accion comprar">Comprar</a>`;
     } else if (accion === 'ver') {
-        return `<a href="CursoCom.html" class="btn-accion ver">Ver</a>`;
+        return `<a href="CursoCom.php" class="btn-accion ver">Ver</a>`;
     }
 }
 

@@ -12,14 +12,14 @@
     <header>
     <nav class="navbar">
         <div class="container">
-            <a href="inicio.html" class="logo">Everdwell</a>
+            <a href="inicio.php" class="logo">Everdwell</a>
             <ul class="nav-links">
-                <li><a href="inicio.html">Inicio</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
-                <li><a href="cursos.html">Cursos</a></li>
-                <li><a href="ofertas.html">Ofertas</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="logout.html">Cerrar sesión</a></li>
+                <li><a href="inicio.php">Inicio</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
+                <li><a href="cursos.php">Cursos</a></li>
+                <li><a href="ofertas.php">Ofertas</a></li>
+                <li><a href="contacto.php">Contacto</a></li>
+                <li><a href="logout.php">Cerrar sesión</a></li>
             </ul>
         </div>
     </nav>

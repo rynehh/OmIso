@@ -25,7 +25,7 @@
 
                     <p id="error-message" class="error-message"></p>
 
-                    <p class="extra-options">¿No tienes cuenta? <a href="registro.html">Regístrate</a></p>
+                    <p class="extra-options">¿No tienes cuenta? <a href="registro.php">Regístrate</a></p>
                 </form>
             </div>
             <!-- Sección del Logo a la derecha -->

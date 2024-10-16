@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Registro exitoso');
             document.getElementById('btnregistro').addEventListener('click', function() {
     
-                window.location.href = 'login.html';
+                window.location.href = 'login.php';
             });
             // Aquí puedes agregar la lógica para enviar los datos del formulario
         }

@@ -11,13 +11,13 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="inicio.html" class="logo">OmIso</a>
+                <a href="inicio.php" class="logo">OmIso</a>
                 <ul class="nav-links">
-                    <li><a href="inicio.html">Inicio</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
-                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="inicio.php">Inicio</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
+                    <li><a href="cursos.php">Cursos</a></li>
                     <li><a href="#">Ofertas</a></li>
-                    <li><a href="logout.html">Cerrar sesión</a></li>
+                    <li><a href="logout.php">Cerrar sesión</a></li>
                 </ul>
             </div>
         </nav>
@@ -32,7 +32,7 @@
                 <li><button class="btn-curso" onclick="mostrarDetallesCurso('valorant')">Curso de Valorant</button></li>
                 <li><button class="btn-curso" onclick="mostrarDetallesCurso('fortnite')">Curso de Fortnite</button></li>
             </ul>
-            <button class="btn-alta-curso" onclick="window.location.href='AltaCurso.html'">Dar de Alta un Curso Nuevo</button>
+            <button class="btn-alta-curso" onclick="window.location.href='AltaCurso.php'">Dar de Alta un Curso Nuevo</button>
         </div>
 
         <div class="profile-content">

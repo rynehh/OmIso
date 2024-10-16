@@ -1,5 +1,5 @@
 function abrirCertificado() {
-    window.open('Certificado.html', '_blank', 'width=800,height=600');
+    window.open('Certificado.php', '_blank', 'width=800,height=600');
 }
 
 // Cursos de ejemplo (se pueden reemplazar por datos dinámicos)

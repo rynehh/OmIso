@@ -11,13 +11,13 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="inicio.html" class="logo">Everdwell</a>
+                <a href="inicio.php" class="logo">Everdwell</a>
                 <ul class="nav-links">
-                    <li><a href="inicio.html">Inicio</a></li>
-                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="inicio.php">Inicio</a></li>
+                    <li><a href="cursos.php">Cursos</a></li>
                     <li><a href="#">Ofertas</a></li>
                     <li><a href="#">Contacto</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
                 </ul>
             </div>
         </nav>
@@ -27,8 +27,8 @@
         <!-- Sidebar se mantiene igual -->
         <div class="sidebar">
             <ul>
-                <li><a href="UsuariosDes.html">Usuarios Deshabilitados</a></li>
-                <li><a href="Categorias.html">Categorias</a></li>
+                <li><a href="UsuariosDes.php">Usuarios Deshabilitados</a></li>
+                <li><a href="Categorias.php">Categorias</a></li>
             </ul>
         </div>
 

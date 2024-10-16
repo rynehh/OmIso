@@ -3,41 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil - Plataforma de Videojuegos</title>
-    <link rel="stylesheet" href="perfil.css">
+    <title>Compras - Plataforma de Videojuegos</title>
+    <link rel="stylesheet" href="Compras.css">
     <link rel="stylesheet" href="chat.css">
 </head>
 <body>
+    <!-- Menú de navegación -->
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="inicio.html" class="logo">OmIso</a>
+                <a href="inicio.php" class="logo">OmIso</a>
                 <ul class="nav-links">
-                    <li><a href="inicio.html">Inicio</a></li>
-                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="inicio.php">Inicio</a></li>
+                    <li><a href="courses.php">Cursos</a></li>
                     <li><a href="#">Ofertas</a></li>
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
+    <!-- Contenedor principal -->
     <main class="profile-container">
         <div class="sidebar">
             <ul>
-                <li><a href="Kardex.html">Kardex</a></li>
-                <li><a href="Compras.html">Cursos Comprados</a></li>
+                <li><a href="Kardex.php">Kardex</a></li>
+                <li><a href="Compras.php">Cursos Comprados</a></li>
             </ul>
         </div>
 
-        <div class="profile-content">
-            <h1>Tu Perfil</h1>
-            <p>Bienvenido, Juan Pablo </p>
-            <p>Aquí puedes ver y gestionar tus cursos y acceder a tu información personal.</p>
+        <div class="Compras-content">
+            <h1>Cursos Comprados</h1>
+            <table id="compras-table">
+                <thead>
+                    <tr>
+                        <th>Curso</th>
+                        <th>Fecha de Compra</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="CursoCom.php">LOL</a></td>
+                        <td>2024-08-01</td>
+                        <td><a href="CursoCom.php">Ver Curso</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="CursoCom.php">Valorant</a></td>
+                        <td>2024-03-15</td>
+                        <td><a href="CursoCom.php">Ver Curso</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </main>
- <div class="chat-window" id="chat-window">
+    <div class="chat-window" id="chat-window">
         <div class="chat-body" id="chat-body">
             <div class="chat-header" id="chat-header">
                 Chat con <span id="chat-username">Selecciona un usuario</span>
@@ -67,12 +87,13 @@
         </div>
     </div>
 
-    <script src="chat.js"></script>
+    <!-- Pie de página -->
     <footer>
         <div class="container">
             <p>&copy; 2024 OmIso. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script src="chat.js"></script>
 </body>
 </html>
-

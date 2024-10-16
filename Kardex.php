@@ -12,12 +12,12 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="inicio.html" class="logo">OmIso</a>
+                <a href="inicio.php" class="logo">OmIso</a>
                 <ul class="nav-links">
-                    <li><a href="inicio.html">Inicio</a></li>
-                    <li><a href="courses.html">Cursos</a></li>
+                    <li><a href="inicio.php">Inicio</a></li>
+                    <li><a href="courses.php">Cursos</a></li>
                     <li><a href="#">Ofertas</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
                 </ul>
             </div>
         </nav>
@@ -32,8 +32,8 @@
 
         <div class="sidebar">
             <ul>
-                <li><a href="Kardex.html">Kardex</a></li>
-                <li><a href="Compras.html">Cursos Comprados</a></li>
+                <li><a href="Kardex.php">Kardex</a></li>
+                <li><a href="Compras.php">Cursos Comprados</a></li>
             </ul>
         </div>
     

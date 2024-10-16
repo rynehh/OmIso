@@ -79,11 +79,11 @@ document.getElementById('nuevoCursoForm').addEventListener('submit', function(ev
     console.log("Curso guardado.");
 
     
-    window.location.href = 'perfil_instructor.html';
+    window.location.href = 'perfil_instructor.php';
 });
 
 // Manejar el evento del botón "Cancelar"
 document.getElementById('btnCancelar').addEventListener('click', function() {
     
-    window.location.href = 'perfil_instructor.html';
+    window.location.href = 'perfil_instructor.php';
 });

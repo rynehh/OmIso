@@ -12,15 +12,15 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="inicio.html" class="logo">OmIso</a>
+                <a href="inicio.php" class="logo">OmIso</a>
                 <ul class="nav-links">
-                    <li><a href="inicio.html">Inicio</a></li>
-                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="inicio.php">Inicio</a></li>
+                    <li><a href="cursos.php">Cursos</a></li>
                     <li><a href="#">Ofertas</a></li>
                     <li><a href="#">Contacto</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
-                    <li><a href="login.html">Iniciar sesión</a></li>
-                    <li><a href="registro.html">Registrarse</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
+                    <li><a href="login.php">Iniciar sesión</a></li>
+                    <li><a href="registro.php">Registrarse</a></li>
                 </ul>
             </div>
         </nav>
@@ -40,7 +40,7 @@
                         <h3>Curso de League of Legends</h3>
                         <p>Aprende desde lo básico hasta técnicas avanzadas para dominar LoL.</p>
                         <span class="price">$49.99</span>
-                          <a href="curso.html" class="btn-comprar">Comprar ahora</a>
+                          <a href="curso.php" class="btn-comprar">Comprar ahora</a>
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
                         <h3>Curso de Valorant</h3>
                         <p>Mejora tus habilidades en Valorant con estrategias y tácticas profesionales.</p>
                         <span class="price">$39.99</span>
-                        <a href="curso.html" class="btn-comprar">Comprar ahora</a>
+                        <a href="curso.php" class="btn-comprar">Comprar ahora</a>
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
                         <h3>Curso de Fortnite</h3>
                         <p>Domina Fortnite con técnicas de construcción y juego en equipo.</p>
                         <span class="price">$29.99</span>
-                          <a href="curso.html" class="btn-comprar">Comprar ahora</a>
+                          <a href="curso.php" class="btn-comprar">Comprar ahora</a>
                     </div>
                 </div>
                 

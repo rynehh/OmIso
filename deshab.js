@@ -11,5 +11,5 @@ function habilitarUsuario(button) {
 
 // Ejemplo de función para abrir la ventana de usuarios deshabilitados
 function abrirVentanaUsuariosDeshabilitados() {
-    window.open('usuarios-deshabilitados.html', '_blank', 'width=800,height=600');
+    window.open('usuarios-deshabilitados.php', '_blank', 'width=800,height=600');
 }

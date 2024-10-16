@@ -11,13 +11,13 @@
     <header>
         <nav class="mi-navbar">
             <div class="mi-container">
-                <a href="inicio.html" class="logo">Everdwell</a>
+                <a href="inicio.php" class="logo">Everdwell</a>
                 <ul class="nav-links">
-                    <li><a href="inicio.html">Inicio</a></li>
-                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="inicio.php">Inicio</a></li>
+                    <li><a href="cursos.php">Cursos</a></li>
                     <li><a href="#">Ofertas</a></li>
                     <li><a href="#">Contacto</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
                 </ul>
             </div>
         </nav>
@@ -27,8 +27,8 @@
       
         <div class="mi-sidebar">
             <ul>
-                <li><a href="UsuariosDes.html">Usuarios Deshabilitados</a></li>
-                <li><a href="Categorias.html">Categorías</a></li>
+                <li><a href="UsuariosDes.php">Usuarios Deshabilitados</a></li>
+                <li><a href="Categorias.php">Categorías</a></li>
             </ul>
         </div>
 
