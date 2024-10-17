@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Expresión regular para validar la contraseña
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-    registerForm.addEventListener('submit', (event) => {
+    registerForm.addEventListener('submit', async (event) => {
         event.preventDefault(); // Evita que el formulario se envíe inmediatamente
 
         const name = nameInput.value.trim();
@@ -35,13 +35,33 @@ document.addEventListener('DOMContentLoaded', () => {
         // Si todo está bien, se oculta el mensaje de error
         else {
             errorMessage.style.display = 'none';
-            
-            alert('Registro exitoso');
-            document.getElementById('btnregistro').addEventListener('click', function() {
-    
-                window.location.href = 'login.php';
-            });
-            // Aquí puedes agregar la lógica para enviar los datos del formulario
+
+            // Crear un objeto con los datos del formulario
+            const formData =  new FormData(registerForm);
+
+
+            try {
+                // Enviar los datos al servidor usando fetch
+                const response = await fetch('00ConexionNewUser.php', {
+                    method: 'POST',
+                    body: formData 
+                });
+
+                const result = await response.text();
+                console.log(result);
+
+                if (response.ok) {
+                    alert('Registro exitoso');
+                    window.location.href = 'login.php'; 
+                } else {
+                    errorMessage.textContent = 'Hubo un error al registrar. Intenta nuevamente.';
+                    errorMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = 'Error de conexión. Intenta nuevamente.';
+                errorMessage.style.display = 'block';
+            }
         }
     });
 

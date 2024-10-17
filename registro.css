@@ -26,6 +26,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    margin-top: 300px;
+   
 }
 
 /* Caja que contiene ambas secciones */
