@@ -11,7 +11,7 @@
         <div class="login-box">
             <!-- Sección del Formulario -->
             <div class="login-form-container">
-                <form id="loginForm">
+                <form method="post" enctype="multipart/form-data" name="loginForm" id="loginForm">
                     <h2>Iniciar Sesión</h2>
                     <p>Accede a tus cursos de videojuegos</p>
 
@@ -21,7 +21,7 @@
                     <label for="password">Contraseña:</label>
                     <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
 
-                    <button type="submit" id="btnini">Iniciar Sesión</button>
+                    <button type="submit" id="btnini" name="btnini">Iniciar Sesión</button>
 
                     <p id="error-message" class="error-message"></p>
 
