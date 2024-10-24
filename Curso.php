@@ -47,12 +47,12 @@
                         <div class="accordion-item">
                             <h4 class="accordion-header" id="level1Heading">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#level1Content" aria-expanded="false" aria-controls="level1Content">
-                                    Nivel 1 - Introducción
+                                    Nivel 1 - Introducción || XAMPP
                                 </button>
                             </h4>
                             <div id="level1Content" class="accordion-collapse collapse" aria-labelledby="level1Heading" data-bs-parent="#courseAccordion">
                                 <div class="accordion-body">
-                                    <video controls src="nivel1.mp4" class="w-100 mb-3"></video>
+                                    <video controls src="BDM1.mp4" class="w-100 mb-3"></video>
                                     <p>Texto adicional del Nivel 1.</p>
                                 </div>
                             </div>
@@ -62,16 +62,32 @@
                         <div class="accordion-item">
                             <h4 class="accordion-header" id="level2Heading">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#level2Content" aria-expanded="false" aria-controls="level2Content">
-                                    Nivel 2 - Estrategias Avanzadas
+                                    Nivel 2 - TABLAS
                                 </button>
                             </h4>
                             <div id="level2Content" class="accordion-collapse collapse" aria-labelledby="level2Heading" data-bs-parent="#courseAccordion">
                                 <div class="accordion-body">
-                                    <video controls src="nivel2.mp4" class="w-100 mb-3"></video>
+                                    <video controls src="BDM2.mp4" class="w-100 mb-3"></video>
                                     <p>Texto adicional del Nivel 2.</p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Nivel 3 -->
+                        <div class="accordion-item">
+                            <h4 class="accordion-header" id="level3Heading">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#level3Content" aria-expanded="false" aria-controls="level3Content">
+                                    Nivel 3 - DROP DATABASE
+                                </button>
+                            </h4>
+                            <div id="level3Content" class="accordion-collapse collapse" aria-labelledby="level3Heading" data-bs-parent="#courseAccordion">
+                                <div class="accordion-body">
+                                    <video controls src="BDM3.mp4" class="w-100 mb-3"></video>
+                                    <p>Texto adicional del Nivel 3.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </section>
 
