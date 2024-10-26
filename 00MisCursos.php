@@ -2,16 +2,13 @@
 include("00ConexionDB.php");
 session_start(); // Iniciar la sesión
 
-header("Content-Type: application/json"); // Configurar la salida en formato JSON
+header("Content-Type: application/json"); 
 
-// Depuración: Muestra el contenido de la sesión
-var_dump($_SESSION); // Esta línea muestra las variables de la sesión para ver si idUsuario está configurado
 
-// Obtener el ID del usuario desde la sesión
 $idUsuario = $_SESSION['idUsuario'] ?? $_GET['idUsuario'] ?? null;
 
 if ($idUsuario) {
-    // Consulta para obtener los cursos en los que está inscrito el usuario
+    
     $sql = $conex->query("SELECT CURSO.ID_CURSO, CURSO.TITULO, CURSO.DESCRIPCURSO, CURSO.COSTO, CURSO.CALIFICACION, 
                           CURSO.IMAGEN, CURSO.NIVEL, CURSO.BAJA, CATEGORIA.NOMCAT AS CATEGORIA
                           FROM USUARIO_CURSO

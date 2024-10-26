@@ -48,35 +48,7 @@ session_start();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    // Asegúrate de que el ID del usuario esté disponible
-                    $idUsuario = $_SESSION['idUsuario'] ?? null;
-
-                    if ($idUsuario) {
-                        // Consulta para obtener los cursos comprados por el usuario
-                        $sql = $conex->query("SELECT CURSO.ID_CURSO, CURSO.TITULO, INSCRIPCION.FECHA_INSCRIPCION
-                                              FROM USUARIO_CURSO AS INSCRIPCION
-                                              INNER JOIN CURSO ON INSCRIPCION.ID_CURSO = CURSO.ID_CURSO
-                                              WHERE INSCRIPCION.ID_USUARIO = $idUsuario");
-
-                        // Verificar si la consulta tuvo éxito
-                        if ($sql && $sql->num_rows > 0) {
-                            // Generar dinámicamente las filas de la tabla
-                            while ($curso = $sql->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td><a href='CursoCom.php?id=" . $curso['ID_CURSO'] . "'>" . $curso['TITULO'] . "</a></td>";
-                                echo "<td>" . $curso['FECHA_INSCRIPCION'] . "</td>";
-                                echo "<td><a href='CursoCom.php?id=" . $curso['ID_CURSO'] . "'>Ver Curso</a></td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            // Mostrar un mensaje si no se encontraron cursos
-                            echo "<tr><td colspan='3'>No tienes cursos comprados.</td></tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='3'>Usuario no autenticado.</td></tr>";
-                    }
-                    ?>
+                    
                 </tbody>
             </table>
         </div>
@@ -92,6 +64,7 @@ session_start();
         </div>
     </footer>
 
+    <script src="compras.js"></script>
     <script src="chat.js"></script>
 </body>
 </html>
