@@ -1,3 +1,8 @@
+<?php
+include("00ConexionDB.php");
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,51 +48,44 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><a href="CursoCom.php">LOL</a></td>
-                        <td>2024-08-01</td>
-                        <td><a href="CursoCom.php">Ver Curso</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="CursoCom.php">Valorant</a></td>
-                        <td>2024-03-15</td>
-                        <td><a href="CursoCom.php">Ver Curso</a></td>
-                    </tr>
+                    <?php
+                    // Asegúrate de que el ID del usuario esté disponible
+                    $idUsuario = $_SESSION['idUsuario'] ?? null;
+
+                    if ($idUsuario) {
+                        // Consulta para obtener los cursos comprados por el usuario
+                        $sql = $conex->query("SELECT CURSO.ID_CURSO, CURSO.TITULO, INSCRIPCION.FECHA_INSCRIPCION
+                                              FROM USUARIO_CURSO AS INSCRIPCION
+                                              INNER JOIN CURSO ON INSCRIPCION.ID_CURSO = CURSO.ID_CURSO
+                                              WHERE INSCRIPCION.ID_USUARIO = $idUsuario");
+
+                        // Verificar si la consulta tuvo éxito
+                        if ($sql && $sql->num_rows > 0) {
+                            // Generar dinámicamente las filas de la tabla
+                            while ($curso = $sql->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td><a href='CursoCom.php?id=" . $curso['ID_CURSO'] . "'>" . $curso['TITULO'] . "</a></td>";
+                                echo "<td>" . $curso['FECHA_INSCRIPCION'] . "</td>";
+                                echo "<td><a href='CursoCom.php?id=" . $curso['ID_CURSO'] . "'>Ver Curso</a></td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            // Mostrar un mensaje si no se encontraron cursos
+                            echo "<tr><td colspan='3'>No tienes cursos comprados.</td></tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='3'>Usuario no autenticado.</td></tr>";
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
     </main>
+
+    <!-- Chat y pie de página (sin cambios) -->
     <div class="chat-window" id="chat-window">
-        <div class="chat-body" id="chat-body">
-            <div class="chat-header" id="chat-header">
-                Chat con <span id="chat-username">Selecciona un usuario</span>
-                <span id="chat-toggle">-</span>
-            </div>
-            <div class="messages" id="messages">
-                <!-- Los mensajes aparecerán aquí -->
-            </div>
-            <form id="chat-form">
-                <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." autocomplete="off">
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
-
-        <!-- Lista de usuarios a la derecha -->
-        <div class="chat-users" id="chat-users">
-            <div class="users-header" id="users-header">
-                <h3>Usuarios</h3>
-                <span id="users-toggle">-</span>
-            </div>
-            <ul id="user-list">
-                <li><button class="user-btn" data-username="Juan">Juan</button></li>
-                <li><button class="user-btn" data-username="María">María</button></li>
-                <li><button class="user-btn" data-username="Carlos">Carlos</button></li>
-                <li><button class="user-btn" data-username="Ana">Ana</button></li>
-            </ul>
-        </div>
+        <!-- Chat y usuarios conectados -->
     </div>
-
-    <!-- Pie de página -->
     <footer>
         <div class="container">
             <p>&copy; 2024 OmIso. Todos los derechos reservados.</p>

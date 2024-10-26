@@ -1,3 +1,7 @@
+<?php
+include("00ConexionDB.php");
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -33,7 +37,7 @@
 
         <div class="profile-content">
             <h1>Tu Perfil</h1>
-            <p>Bienvenido, Juan Pablo </p>
+            <p>Bienvenido, <?php echo $_SESSION['nom']; ?> <?php echo $_SESSION['idUsuario']; ?> </p>
             <p>Aquí puedes ver y gestionar tus cursos y acceder a tu información personal.</p>
         </div>
     </main>
