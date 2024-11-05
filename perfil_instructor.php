@@ -17,6 +17,7 @@
                     <li><a href="perfil.php">Perfil</a></li>
                     <li><a href="cursos.php">Cursos</a></li>
                     <li><a href="#">Ofertas</a></li>
+                    <li><a href="modificar.php">Editar Perfil</a></li>
                     <li><a href="logout.php">Cerrar sesión</a></li>
                 </ul>
             </div>

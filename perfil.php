@@ -32,6 +32,7 @@ session_start();
             <ul>
                 <li><a href="Kardex.php">Kardex</a></li>
                 <li><a href="Compras.php">Cursos Comprados</a></li>
+                <li><a href="modificar.php">Editar Perfil</a></li>
             </ul>
         </div>
 

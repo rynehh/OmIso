@@ -55,7 +55,7 @@
 
                     <p id="error-message" class="error-message"></p>
 
-                    <p class="extra-options">¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
+                    <p class="extra-options">¿Ya tienes una cuenta? <a href="login.php">Inicia sesión</a></p>
                 </form>
 
                 <?php

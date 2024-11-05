@@ -10,7 +10,7 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="inicio.php" class="logo">Everdwell</a>
+                <a href="inicio.php" class="logo">OmIso</a>
                 <ul class="nav-links">
                     <li><a href="inicio.php">Inicio</a></li>
                     <li><a href="cursos.php">Cursos</a></li>
@@ -27,6 +27,7 @@
             <ul>
                 <li><a href="UsuariosDes.php">Usuarios Deshabilitados</a></li>
                 <li><a href="Categorias.php">Categorias</a></li>
+                <li><a href="modificar.php">Editar Perfil</a></li>
             </ul>
         </div>
 

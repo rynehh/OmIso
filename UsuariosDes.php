@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuarios Deshabilitados - Everdwell</title>
+    <title>Usuarios Deshabilitados</title>
     <link rel="stylesheet" href="Admin.css"> <!-- Mantendremos los estilos del perfil -->
     <link rel="stylesheet" href="deshab.css"> <!-- Incluimos los estilos de la tabla -->
 </head>
@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="inicio.php" class="logo">Everdwell</a>
+                <a href="inicio.php" class="logo">OmIso</a>
                 <ul class="nav-links">
                     <li><a href="inicio.php">Inicio</a></li>
                     <li><a href="cursos.php">Cursos</a></li>

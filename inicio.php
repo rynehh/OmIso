@@ -5,6 +5,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@ session_start();
     <link rel="stylesheet" href="inicio.css">
     <link rel="stylesheet" href="chat.css">
 </head>
+
 <body>
     <!-- Menú de navegación -->
     <header>
@@ -23,9 +25,30 @@ session_start();
                     <li><a href="cursos.php">Cursos</a></li>
                     <li><a href="#">Ofertas</a></li>
                     <li><a href="#">Contacto</a></li>
+
+                    <?php if (isset($_SESSION['rol'])): ?>
+                    <?php if ($_SESSION['rol'] == 1): ?>
+
+                    <li><a href="Admin.php">Perfil</a></li>
+                    <?php elseif ($_SESSION['rol'] == 2): ?>
+
                     <li><a href="perfil.php">Perfil</a></li>
+                    <?php elseif ($_SESSION['rol'] == 3): ?>
+
+                    <li><a href="perfil_instructor.php">Perfil</a></li>
+                    <?php endif; ?>
+                    <?php endif; ?>                  
+
+                    <?php if (!isset($_SESSION['rol'])): ?>
                     <li><a href="login.php">Iniciar sesión</a></li>
                     <li><a href="registro.php">Registrarse</a></li>
+                    <?php endif; ?> 
+
+                    <?php if (isset($_SESSION['rol'])): ?>
+                    <li><a href="00Cerrarsesion.php">Cerrar Sesion</a></li>
+                    <?php endif; ?> 
+
+
                 </ul>
             </div>
         </nav>
@@ -37,57 +60,55 @@ session_start();
             <h1>Descubre Nuestros Cursos</h1>
             <p>Explora una variedad de cursos diseñados para mejorar tus habilidades</p>
             <div class="slide">
-            <div class="slide-inner">
-                <input class="slide-open" type="radio" id="slide-1" 
-                      name="slide" aria-hidden="true" hidden="" checked="checked">
-                <div class="slide-item">
-                    <img src="1.jpg">
+                <div class="slide-inner">
+                    <input class="slide-open" type="radio" id="slide-1" name="slide" aria-hidden="true" hidden=""
+                        checked="checked">
+                    <div class="slide-item">
+                        <img src="4.jpg">
+                    </div>
+                    <input class="slide-open" type="radio" id="slide-2" name="slide" aria-hidden="true" hidden="">
+                    <div class="slide-item">
+                        <img src="5.jpg">
+                    </div>
+                    <input class="slide-open" type="radio" id="slide-3" name="slide" aria-hidden="true" hidden="">
+                    <div class="slide-item">
+                        <img src="6.jpg">
+                    </div>
+                    <label for="slide-3" class="slide-control prev control-1">‹</label>
+                    <label for="slide-2" class="slide-control next control-1">›</label>
+                    <label for="slide-1" class="slide-control prev control-2">‹</label>
+                    <label for="slide-3" class="slide-control next control-2">›</label>
+                    <label for="slide-2" class="slide-control prev control-3">‹</label>
+                    <label for="slide-1" class="slide-control next control-3">›</label>
+                    <ol class="slide-indicador">
+                        <li>
+                            <label for="slide-1" class="slide-circulo">•</label>
+                        </li>
+                        <li>
+                            <label for="slide-2" class="slide-circulo">•</label>
+                        </li>
+                        <li>
+                            <label for="slide-3" class="slide-circulo">•</label>
+                        </li>
+                    </ol>
                 </div>
-                <input class="slide-open" type="radio" id="slide-2" 
-                      name="slide" aria-hidden="true" hidden="">
-                <div class="slide-item">
-                    <img src="2.jpg">
-                </div>
-                <input class="slide-open" type="radio" id="slide-3" 
-                      name="slide" aria-hidden="true" hidden="">
-                <div class="slide-item">
-                    <img src="3.jpg">
-                </div>
-                <label for="slide-3" class="slide-control prev control-1">‹</label>
-                <label for="slide-2" class="slide-control next control-1">›</label>
-                <label for="slide-1" class="slide-control prev control-2">‹</label>
-                <label for="slide-3" class="slide-control next control-2">›</label>
-                <label for="slide-2" class="slide-control prev control-3">‹</label>
-                <label for="slide-1" class="slide-control next control-3">›</label>
-                <ol class="slide-indicador">
-                    <li>
-                        <label for="slide-1" class="slide-circulo">•</label>
-                    </li>
-                    <li>
-                        <label for="slide-2" class="slide-circulo">•</label>
-                    </li>
-                    <li>
-                        <label for="slide-3" class="slide-circulo">•</label>
-                    </li>
-                </ol>
             </div>
-        </div>
-            
+
 
             <!-- Sección de cursos -->
             <div class="courses">
                 <div class="course-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/13/13973.png" alt="Curso 1">
+                    <img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/sett/skins/skin56/images/sett_splash_uncentered_56.jpg" alt="Curso 1">
                     <div class="course-info">
                         <h3>Curso de League of Legends</h3>
                         <p>Aprende desde lo básico hasta técnicas avanzadas para dominar LoL.</p>
                         <span class="price">$49.99</span>
-                          <a href="curso.php" class="btn-comprar">Comprar ahora</a>
+                        <a href="curso.php" class="btn-comprar">Comprar ahora</a>
                     </div>
                 </div>
 
                 <div class="course-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/13/13973.png" alt="Curso 2">
+                    <img src="https://saiganak.com/wp-content/uploads/2024/10/valorant-episode-9-act-3-release-00.jpg" alt="Curso 2">
                     <div class="course-info">
                         <h3>Curso de Valorant</h3>
                         <p>Mejora tus habilidades en Valorant con estrategias y tácticas profesionales.</p>
@@ -97,15 +118,15 @@ session_start();
                 </div>
 
                 <div class="course-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/13/13973.png" alt="Curso 3">
+                    <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2020/06/Fortnite-Season-3-Shark-Riding-Meowscles.jpg" alt="Curso 3">
                     <div class="course-info">
                         <h3>Curso de Fortnite</h3>
                         <p>Domina Fortnite con técnicas de construcción y juego en equipo.</p>
                         <span class="price">$29.99</span>
-                          <a href="curso.php" class="btn-comprar">Comprar ahora</a>
+                        <a href="curso.php" class="btn-comprar">Comprar ahora</a>
                     </div>
                 </div>
-                
+
                 <!-- Puedes agregar más cursos aquí -->
             </div>
         </div>
@@ -150,4 +171,5 @@ session_start();
     </footer>
     <script src="inicio.js"></script>
 </body>
+
 </html>

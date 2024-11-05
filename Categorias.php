@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Categorías - Everdwell</title>
+    <title>Gestión de Categorías - OMISO</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="categorias.css"> 
 </head>
@@ -11,7 +11,7 @@
     <header>
         <nav class="mi-navbar">
             <div class="mi-container">
-                <a href="inicio.php" class="logo">Everdwell</a>
+                <a href="inicio.php" class="logo">OmIso</a>
                 <ul class="nav-links">
                     <li><a href="inicio.php">Inicio</a></li>
                     <li><a href="cursos.php">Cursos</a></li>
