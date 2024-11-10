@@ -1,14 +1,34 @@
 // Variables para manejar los usuarios y el chat
 let activeUser = null;
 
-// Función para cambiar el usuario activo
-document.querySelectorAll(".user-btn").forEach(button => {
-    button.addEventListener("click", function() {
-        activeUser = this.getAttribute("data-username");
-        document.getElementById("chat-username").textContent = activeUser;
-        document.getElementById("messages").innerHTML = ''; // Limpiar los mensajes previos
-    });
-});
+// Función para cargar los usuarios desde la base de datos
+function cargarUsuarios() {
+    fetch("obtener_usuarios.php")
+        .then(response => response.json())
+        .then(usuarios => {
+            const userList = document.getElementById("user-list");
+            userList.innerHTML = ""; // Limpiar la lista antes de agregar nuevos usuarios
+
+            usuarios.forEach(usuario => {
+                const userButton = document.createElement("li");
+                userButton.innerHTML = `<button class="user-btn" data-username="${usuario}">${usuario}</button>`;
+                userList.appendChild(userButton);
+            });
+
+            // Agregar el evento click para cada botón de usuario recién agregado
+            document.querySelectorAll(".user-btn").forEach(button => {
+                button.addEventListener("click", function() {
+                    activeUser = this.getAttribute("data-username");
+                    document.getElementById("chat-username").textContent = activeUser;
+                    document.getElementById("messages").innerHTML = ''; // Limpiar los mensajes previos
+                });
+            });
+        })
+        .catch(error => console.error("Error al cargar los usuarios:", error));
+}
+
+// Llamar a cargarUsuarios cuando se carga la página
+document.addEventListener("DOMContentLoaded", cargarUsuarios);
 
 // Función para minimizar el chat sin desaparecer
 document.getElementById("chat-header").addEventListener("click", function() {

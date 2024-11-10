@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.course-card button');
 
@@ -7,11 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (event) => {
             const courseName = event.target.closest('.course-card').querySelector('h3').textContent;
             alert(`Has seleccionado el curso: ${courseName}`);
-            // Aquí puedes agregar la lógica para manejar la compra del curso
-            // Por ejemplo, redirigir a una página de pago o añadir el curso al carrito
+            
+            // Añadir la clase de animación para hacer el efecto de clic
+            button.classList.add('animate');
+
+            // Remover la clase de animación después de un tiempo corto para que pueda reutilizarse
+            setTimeout(() => {
+                button.classList.remove('animate');
+            }, 100); // 100 ms para que coincida con la duración de la animación
         });
     });
 });
+
 /* Animación para el botón al hacer clic */
 @keyframes buttonClick {
     from {
@@ -22,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 }
 
+/* Aplica la animación cuando se agrega la clase 'animate' */
 button.animate {
     animation: buttonClick 0.1s ease-in-out;
 }

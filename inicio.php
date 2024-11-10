@@ -97,35 +97,35 @@ session_start();
 
             <!-- Sección de cursos -->
             <div class="courses">
-                <div class="course-card">
-                    <img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/sett/skins/skin56/images/sett_splash_uncentered_56.jpg" alt="Curso 1">
-                    <div class="course-info">
-                        <h3>Curso de League of Legends</h3>
-                        <p>Aprende desde lo básico hasta técnicas avanzadas para dominar LoL.</p>
-                        <span class="price">$49.99</span>
-                        <a href="curso.php" class="btn-comprar">Comprar ahora</a>
-                    </div>
-                </div>
+            <div class="courses">
+<?php
+// Consulta a la base de datos para obtener los cursos activos
+$query = "SELECT ID_CURSO, TITULO, DESCRIPCURSO, COSTO, IMAGEN FROM CURSO WHERE BAJA = 0";
+$result = $conex->query($query);
 
-                <div class="course-card">
-                    <img src="https://saiganak.com/wp-content/uploads/2024/10/valorant-episode-9-act-3-release-00.jpg" alt="Curso 2">
-                    <div class="course-info">
-                        <h3>Curso de Valorant</h3>
-                        <p>Mejora tus habilidades en Valorant con estrategias y tácticas profesionales.</p>
-                        <span class="price">$39.99</span>
-                        <a href="curso.php" class="btn-comprar">Comprar ahora</a>
-                    </div>
-                </div>
+// Verifica si hay cursos disponibles
+if ($result && $result->num_rows > 0) {
+    while ($curso = $result->fetch_assoc()) {
+        // Si el curso tiene una imagen guardada, la usa; si no, usa una imagen predeterminada
+        $imagenSrc = !empty($curso["IMAGEN"]) ? 'uploads/' . htmlspecialchars($curso["IMAGEN"]) : 'path/to/default-image.jpg';
 
-                <div class="course-card">
-                    <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2020/06/Fortnite-Season-3-Shark-Riding-Meowscles.jpg" alt="Curso 3">
-                    <div class="course-info">
-                        <h3>Curso de Fortnite</h3>
-                        <p>Domina Fortnite con técnicas de construcción y juego en equipo.</p>
-                        <span class="price">$29.99</span>
-                        <a href="curso.php" class="btn-comprar">Comprar ahora</a>
-                    </div>
-                </div>
+        echo '<div class="course-card">';
+        echo '    <img src="' . $imagenSrc . '" alt="Curso ' . htmlspecialchars($curso["TITULO"]) . '">';
+        echo '    <div class="course-info">';
+        echo '        <h3>' . htmlspecialchars($curso["TITULO"]) . '</h3>';
+        echo '        <p>' . htmlspecialchars($curso["DESCRIPCURSO"]) . '</p>';
+        echo '        <span class="price">$' . htmlspecialchars($curso["COSTO"]) . '</span>';
+        echo '        <a href="curso.php?id=' . htmlspecialchars($curso["ID_CURSO"]) . '" class="btn-comprar">Comprar ahora</a>';
+        echo '    </div>';
+        echo '</div>';
+    }
+} else {
+    echo '<p>No hay cursos disponibles en este momento.</p>';
+}
+?>
+</div>
+
+
 
                 <!-- Puedes agregar más cursos aquí -->
             </div>

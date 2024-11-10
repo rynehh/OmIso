@@ -251,3 +251,79 @@ header {
     background-color: #218838;
 }
 
+/* Contenedor principal para las tarjetas de curso */
+#cursos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Estilo de cada tarjeta de curso */
+.course-card {
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    background-color: #fff;
+    transition: transform 0.2s ease;
+}
+
+/* Efecto hover para escalar ligeramente */
+.course-card:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para la imagen de la tarjeta */
+.course-card img {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* Contenido del curso */
+.course-content {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Título del curso */
+.course-content h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #333;
+}
+
+/* Descripción del curso */
+.course-content p {
+    font-size: 1em;
+    color: #777;
+    margin: 10px 0;
+}
+
+/* Precio del curso */
+.price {
+    font-size: 1.2em;
+    color: #28a745;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Botón para comprar */
+.btn-buy {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #28a745;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover para el botón */
+.btn-buy:hover {
+    background-color: #218838;
+}

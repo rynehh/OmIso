@@ -71,14 +71,18 @@ header {
 
 /* Sidebar */
 .sidebar {
-    width: 250px;
-    background-color: #f0f0f0;
-    padding: 20px;
-    height: 100vh;
     position: fixed;
-    top: 70px;
+    top: 70px; /* Ajusta según la altura de tu barra de navegación */
     left: 0;
+    width: 250px; /* Ancho de la barra lateral */
+    height: calc(100vh - 70px); /* Altura completa menos la barra de navegación */
+    background-color: #28a745;
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
+
+
 
 .sidebar ul {
     list-style: none;

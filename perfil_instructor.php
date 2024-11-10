@@ -1,3 +1,21 @@
+<?php
+include("00ConexionDB.php");
+session_start();
+
+// Verificar si el usuario es un instructor y tiene su sesión iniciada
+if (isset($_SESSION['rol']) && $_SESSION['rol'] == 3 && isset($_SESSION['idUsuario'])) {
+    $idInstructor = $_SESSION['idUsuario'];
+
+    // Consulta para obtener los cursos del instructor
+    $queryCursos = "SELECT ID_CURSO, TITULO FROM CURSO WHERE ID_INSTRUCTOR = ?";
+    $stmt = $conex->prepare($queryCursos);
+    $stmt->bind_param("i", $idInstructor);
+    $stmt->execute();
+    $resultCursos = $stmt->get_result();
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -29,9 +47,16 @@
         <div class="sidebar">
             <h3>Tus Cursos</h3>
             <ul>
-                <li><button class="btn-curso" onclick="mostrarDetallesCurso('lol')">Curso de League of Legends</button></li>
-                <li><button class="btn-curso" onclick="mostrarDetallesCurso('valorant')">Curso de Valorant</button></li>
-                <li><button class="btn-curso" onclick="mostrarDetallesCurso('fortnite')">Curso de Fortnite</button></li>
+                <?php
+                if ($resultCursos && $resultCursos->num_rows > 0) {
+                    // Mostrar los cursos obtenidos de la base de datos
+                    while ($curso = $resultCursos->fetch_assoc()) {
+                        echo '<li><button class="btn-curso" onclick="mostrarDetallesCurso(' . htmlspecialchars($curso['ID_CURSO']) . ')">' . htmlspecialchars($curso['TITULO']) . '</button></li>';
+                    }
+                } else {
+                    echo '<li>No tienes cursos registrados.</li>';
+                }
+                ?>
             </ul>
             <button class="btn-alta-curso" onclick="window.location.href='AltaCurso.php'">Dar de Alta un Curso Nuevo</button>
         </div>
