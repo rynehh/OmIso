@@ -48,39 +48,7 @@ session_start();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    // Asegurarse de que el usuario está autenticado
-                    if (isset($_SESSION['idUsuario'])) {
-                        $idUsuario = $_SESSION['idUsuario'];
-
-                        // Consulta para obtener los cursos comprados por el usuario
-                        $query = "SELECT CURSO.ID_CURSO, CURSO.TITULO, INSCRIPCION.FECHA_INSCRIPCION 
-                                  FROM USUARIO_CURSO AS INSCRIPCION
-                                  INNER JOIN CURSO ON INSCRIPCION.ID_CURSO = CURSO.ID_CURSO
-                                  WHERE INSCRIPCION.ID_USUARIO = ?";
-                        $stmt = $conex->prepare($query);
-                        $stmt->bind_param("i", $idUsuario);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-
-                        // Verificar si hay resultados
-                        if ($result && $result->num_rows > 0) {
-                            while ($curso = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td><a href='CursoCom.php?curso_id=" . htmlspecialchars($curso['ID_CURSO']) . "'>" . htmlspecialchars($curso['TITULO']) . "</a></td>";
-                                echo "<td>" . htmlspecialchars($curso['FECHA_INSCRIPCION']) . "</td>";
-                                echo "<td><a href='CursoCom.php?curso_id=" . htmlspecialchars($curso['ID_CURSO']) . "' class='btn-ver'>Ver Curso</a></td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "<tr><td colspan='3'>No tienes cursos comprados.</td></tr>";
-                        }
-
-                        $stmt->close();
-                    } else {
-                        echo "<tr><td colspan='3'>Usuario no autenticado.</td></tr>";
-                    }
-                    ?>
+                    
                 </tbody>
             </table>
         </div>
