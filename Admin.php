@@ -14,9 +14,7 @@
                 <ul class="nav-links">
                     <li><a href="inicio.php">Inicio</a></li>
                     <li><a href="cursos.php">Cursos</a></li>
-                    <li><a href="#">Ofertas</a></li>
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="perfil.php">Perfil</a></li>
+                    <li><a href="Admin.php">Perfil</a></li>
                 </ul>
             </div>
         </nav>

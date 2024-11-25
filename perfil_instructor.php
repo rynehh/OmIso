@@ -32,10 +32,17 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] == 3 && isset($_SESSION['idUsuar
                 <a href="inicio.php" class="logo">OmIso</a>
                 <ul class="nav-links">
                     <li><a href="inicio.php">Inicio</a></li>
-                    <li><a href="perfil.php">Perfil</a></li>
+                    <li><a href="perfil_instructor.php">Perfil</a></li>
                     <li><a href="cursos.php">Cursos</a></li>
-                    <li><a href="#">Ofertas</a></li>
                     <li><a href="modificar.php">Editar Perfil</a></li>
+                    <?php if (isset($_SESSION['rol'])): ?>
+                        <?php if ($_SESSION['rol'] == 2): ?>
+                            <li><a href="chat_alumno.php">Chat</a></li>
+                        <?php elseif ($_SESSION['rol'] == 3): ?>
+                            <li><a href="chat_instructor.php">Chat</a></li>
+                        <?php endif; ?>
+                    <?php endif; ?>
+
                     <li><a href="logout.php">Cerrar sesión</a></li>
                 </ul>
             </div>

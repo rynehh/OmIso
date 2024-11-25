@@ -20,9 +20,26 @@ session_start();
                 <a href="inicio.php" class="logo">OmIso</a>
                 <ul class="nav-links">
                     <li><a href="inicio.php">Inicio</a></li>
-                    <li><a href="courses.php">Cursos</a></li>
-                    <li><a href="#">Ofertas</a></li>
-                    <li><a href="perfil.php">Perfil</a></li>
+                    <li><a href="cursos.php">Cursos</a></li>
+                    <?php if (isset($_SESSION['rol'])): ?>
+                        <?php if ($_SESSION['rol'] == 1): ?>
+                            <li><a href="Admin.php">Perfil</a></li>
+                        <?php elseif ($_SESSION['rol'] == 2): ?>
+                            <li><a href="perfil.php">Perfil</a></li>
+                        <?php elseif ($_SESSION['rol'] == 3): ?>
+                            <li><a href="perfil_instructor.php">Perfil</a></li>
+                        <?php endif; ?>
+                    <?php endif; ?>
+
+                    <?php if (!isset($_SESSION['rol'])): ?>
+                        <li><a href="login.php">Iniciar sesión</a></li>
+                        <li><a href="registro.php">Registrarse</a></li>
+                    <?php endif; ?>
+
+                    <?php if (isset($_SESSION['rol'])): ?>
+                        <li><a href="00Cerrarsesion.php">Cerrar Sesión</a></li>
+                    <?php endif; ?>
+                </ul>
                 </ul>
             </div>
         </nav>

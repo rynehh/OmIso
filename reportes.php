@@ -15,10 +15,8 @@
             <a href="inicio.php" class="logo">Everdwell</a>
             <ul class="nav-links">
                 <li><a href="inicio.php">Inicio</a></li>
-                <li><a href="perfil.php">Perfil</a></li>
+                <li><a href="Admin.php">Perfil</a></li>
                 <li><a href="cursos.php">Cursos</a></li>
-                <li><a href="ofertas.php">Ofertas</a></li>
-                <li><a href="contacto.php">Contacto</a></li>
                 <li><a href="logout.php">Cerrar sesión</a></li>
             </ul>
         </div>
