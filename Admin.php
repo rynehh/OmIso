@@ -1,3 +1,34 @@
+<?php
+include("00ConexionDB.php"); // Incluye la conexión a la base de datos
+session_start();
+
+// Verificar si el usuario tiene rol de administrador (ROL = 1) y está autenticado
+if (isset($_SESSION['rol']) && $_SESSION['rol'] == 1 && isset($_SESSION['idUsuario'])) {
+    $idUsuario = $_SESSION['idUsuario'];
+
+    // Consultar la base de datos para obtener los datos del usuario
+    $query = "SELECT NOMBRE, EMAIL, FOTO FROM usuario WHERE ID_USUARIO = ?";
+    if ($stmt = $conex->prepare($query)) { // Usar $conex en lugar de $conn
+        $stmt->bind_param('i', $idUsuario);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $usuario = $result->fetch_assoc();
+        } else {
+            echo "No se encontraron datos del usuario.";
+            exit;
+        }
+        $stmt->close();
+    } else {
+        die("Error al preparar la consulta: " . $conex->error);
+    }
+} else {
+    // Redirigir al login si no hay sesión o no es administrador
+    header('Location: login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,22 +52,29 @@
     </header>
 
     <main class="profile-container">
+        <!-- Sidebar -->
         <div class="sidebar">
             <ul>
                 <li><a href="UsuariosDes.php">Usuarios Deshabilitados</a></li>
-                <li><a href="Categorias.php">Categorias</a></li>
+                <li><a href="Categorias.php">Categorías</a></li>
                 <li><a href="modificar.php">Editar Perfil</a></li>
             </ul>
         </div>
 
+        <!-- Contenido del perfil -->
         <div class="profile-content">
             <h1>Tu Perfil</h1>
-            <p>Bienvenido, Administrador </p>
-            <p>Gestiona Usuarios y Categorias.</p>
+            <p>Bienvenido, <?php echo htmlspecialchars($usuario['NOMBRE']); ?>.</p>
+            <p>Correo Electrónico: <?php echo htmlspecialchars($usuario['EMAIL']); ?></p>
+            <?php if (!empty($usuario['FOTO'])): ?>
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($usuario['FOTO']); ?>" alt="Foto de perfil" style="width: 150px; height: 150px; border-radius: 50%;">
+            <?php else: ?>
+                <img src="default-profile.png" alt="Foto de perfil predeterminada" style="width: 150px; height: 150px; border-radius: 50%;">
+            <?php endif; ?>
+            <p>Gestiona Usuarios y Categorías desde este panel.</p>
         </div>
     </main>
 
-    <script src="admin.js"></script>
     <footer>
         <div class="container">
             <p>&copy; 2024 Everdwell. Todos los derechos reservados.</p>
@@ -44,4 +82,3 @@
     </footer>
 </body>
 </html>
-

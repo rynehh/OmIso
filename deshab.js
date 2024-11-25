@@ -1,15 +1,23 @@
 function habilitarUsuario(button) {
-    // Encontrar la fila del usuario correspondiente
-    const row = button.parentElement.parentElement;
-    
-    // Eliminar la fila para simular la habilitación del usuario
-    row.remove();
+    const userId = button.getAttribute("data-id");
+    if (!userId) {
+        alert("ID de usuario no encontrado.");
+        return;
+    }
 
-    // Mensaje de confirmación
-    alert('El usuario ha sido habilitado.');
-}
-
-// Ejemplo de función para abrir la ventana de usuarios deshabilitados
-function abrirVentanaUsuariosDeshabilitados() {
-    window.open('usuarios-deshabilitados.php', '_blank', 'width=800,height=600');
+    fetch("00habilitar_usuario.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idUsuario: userId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert("Usuario habilitado correctamente.");
+            button.closest("tr").remove(); // Elimina la fila del usuario habilitado
+        } else {
+            alert("Error al habilitar usuario: " + data.error);
+        }
+    })
+    .catch(error => console.error("Error:", error));
 }

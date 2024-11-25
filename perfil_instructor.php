@@ -6,13 +6,32 @@ session_start();
 if (isset($_SESSION['rol']) && $_SESSION['rol'] == 3 && isset($_SESSION['idUsuario'])) {
     $idInstructor = $_SESSION['idUsuario'];
 
+    // Consulta para obtener los datos del instructor
+    $queryInstructor = "SELECT NOMBRE, EMAIL, FOTO FROM usuario WHERE ID_USUARIO = ?";
+    $stmtInstructor = $conex->prepare($queryInstructor);
+    $stmtInstructor->bind_param("i", $idInstructor);
+    $stmtInstructor->execute();
+    $resultInstructor = $stmtInstructor->get_result();
+
+    if ($resultInstructor->num_rows > 0) {
+        $instructor = $resultInstructor->fetch_assoc();
+    } else {
+        echo "No se encontraron datos del instructor.";
+        exit;
+    }
+    $stmtInstructor->close();
+
     // Consulta para obtener los cursos del instructor
-    $queryCursos = "SELECT ID_CURSO, TITULO FROM CURSO WHERE ID_INSTRUCTOR = ?";
-    $stmt = $conex->prepare($queryCursos);
-    $stmt->bind_param("i", $idInstructor);
-    $stmt->execute();
-    $resultCursos = $stmt->get_result();
-    $stmt->close();
+    $queryCursos = "SELECT ID_CURSO, TITULO FROM curso WHERE ID_INSTRUCTOR = ?";
+    $stmtCursos = $conex->prepare($queryCursos);
+    $stmtCursos->bind_param("i", $idInstructor);
+    $stmtCursos->execute();
+    $resultCursos = $stmtCursos->get_result();
+    $stmtCursos->close();
+} else {
+    // Redirigir al login si no hay sesión o no es instructor
+    header('Location: login.php');
+    exit;
 }
 ?>
 
@@ -42,7 +61,6 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] == 3 && isset($_SESSION['idUsuar
                             <li><a href="chat_instructor.php">Chat</a></li>
                         <?php endif; ?>
                     <?php endif; ?>
-
                     <li><a href="logout.php">Cerrar sesión</a></li>
                 </ul>
             </div>
@@ -51,6 +69,7 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] == 3 && isset($_SESSION['idUsuar
 
     <!-- Contenedor principal -->
     <main class="profile-container">
+        <!-- Sidebar -->
         <div class="sidebar">
             <h3>Tus Cursos</h3>
             <ul>
@@ -68,8 +87,15 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] == 3 && isset($_SESSION['idUsuar
             <button class="btn-alta-curso" onclick="window.location.href='AltaCurso.php'">Dar de Alta un Curso Nuevo</button>
         </div>
 
+        <!-- Contenido del perfil -->
         <div class="profile-content">
-            <h1>Bienvenido, Instructor</h1>
+            <h1>Bienvenido, <?php echo htmlspecialchars($instructor['NOMBRE']); ?>.</h1>
+            <p>Correo Electrónico: <?php echo htmlspecialchars($instructor['EMAIL']); ?></p>
+            <?php if (!empty($instructor['FOTO'])): ?>
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($instructor['FOTO']); ?>" alt="Foto de perfil" style="width: 150px; height: 150px; border-radius: 50%;">
+            <?php else: ?>
+                <img src="default-profile.png" alt="Foto de perfil predeterminada" style="width: 150px; height: 150px; border-radius: 50%;">
+            <?php endif; ?>
             <p>Aquí puedes gestionar los cursos que estás impartiendo.</p>
             <div id="detalles-curso" class="detalles-curso">
                 <!-- Aquí se mostrarán los detalles de los cursos -->
