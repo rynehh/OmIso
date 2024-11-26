@@ -1,45 +1,57 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const userButtons = document.querySelectorAll(".user-btn");
-    const chatTitle = document.getElementById("chat-title");
     const chatMessages = document.getElementById("chat-messages");
     const messageInput = document.getElementById("message-input");
     const sendMessageButton = document.getElementById("send-message");
-
+    const userButtons = document.querySelectorAll(".user-btn");
     let selectedUserId = null;
 
-    userButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            selectedUserId = button.getAttribute("data-id");
-            chatTitle.textContent = "Chat con " + button.textContent;
+    // Función para cargar el historial de mensajes
+    const fetchMessages = () => {
+        if (!selectedUserId) return;
 
-            // Cargar historial de mensajes
-            fetch("00cargar_historial.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ destinatario: selectedUserId })
+        fetch("00cargar_historial.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ destinatario: selectedUserId }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.error) {
+                    console.error("Error al cargar mensajes:", data.error);
+                    return;
+                }
+
+                // Limpiar mensajes previos
+                chatMessages.innerHTML = "";
+                if (data.length === 0) {
+                    chatMessages.innerHTML = "<p>No hay mensajes todavía.</p>";
+                } else {
+                    data.forEach((message) => {
+                        const messageElement = document.createElement("div");
+                        messageElement.className =
+                            message.REMITENTE === selectedUserId ? "message other" : "message self";
+
+                        const name = document.createElement("span");
+                        name.className = "message-name";
+                        name.textContent =
+                            message.REMITENTE === selectedUserId
+                                ? message.NOMBRE_REMITENTE
+                                : "Tú";
+
+                        const text = document.createElement("p");
+                        text.textContent = message.TEXT;
+
+                        messageElement.appendChild(name);
+                        messageElement.appendChild(text);
+                        chatMessages.appendChild(messageElement);
+                    });
+                }
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Desplazar hacia abajo
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        alert("Error al cargar el historial: " + data.error);
-                        return;
-                    }
+            .catch((err) => console.error("Error al cargar historial:", err));
+    };
 
-                    chatMessages.innerHTML = ""; // Limpiar mensajes previos
-                    if (data.length === 0) {
-                        chatMessages.innerHTML = "<p>No hay mensajes todavía.</p>";
-                    } else {
-                        data.forEach(message => {
-                            const messageDiv = document.createElement("div");
-                            messageDiv.textContent = `${message.REMITENTE}: ${message.TEXT}`;
-                            chatMessages.appendChild(messageDiv);
-                        });
-                    }
-                })
-                .catch(error => console.error("Error al cargar el historial:", error));
-        });
-    });
-
+    // Enviar mensaje
     sendMessageButton.addEventListener("click", () => {
         const message = messageInput.value.trim();
         if (!message || !selectedUserId) {
@@ -50,19 +62,29 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch("00enviar_mensaje.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ destinatario: selectedUserId, mensaje: message })
+            body: JSON.stringify({ destinatario: selectedUserId, mensaje: message }),
         })
-            .then(response => response.json())
-            .then(data => {
+            .then((response) => response.json())
+            .then((data) => {
                 if (data.error) {
                     alert("Error al enviar mensaje: " + data.error);
                 } else {
-                    const messageDiv = document.createElement("div");
-                    messageDiv.textContent = `Tú: ${message}`;
-                    chatMessages.appendChild(messageDiv);
-                    messageInput.value = "";
+                    messageInput.value = ""; // Limpiar el campo de entrada
+                    fetchMessages(); // Actualizar mensajes
                 }
             })
-            .catch(error => console.error("Error al enviar mensaje:", error));
+            .catch((err) => console.error("Error al enviar mensaje:", err));
     });
+
+    // Manejar selección de usuario
+    userButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            selectedUserId = button.getAttribute("data-id");
+            document.getElementById("chat-title").textContent = `Chat con ${button.textContent}`;
+            fetchMessages(); // Cargar historial al seleccionar un usuario
+        });
+    });
+
+    // Configurar actualización en tiempo real
+    setInterval(fetchMessages, 3000); // Actualizar cada 3 segundos
 });

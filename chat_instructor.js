@@ -1,20 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const chatMessages = document.getElementById("chat-messages");
     const messageInput = document.getElementById("message-input");
     const sendMessageButton = document.getElementById("send-message");
-    const chatMessages = document.getElementById("chat-messages");
-    const userList = document.getElementById("user-list");
+    const userButtons = document.querySelectorAll(".user-btn");
     let selectedUserId = null;
 
-    // Función para manejar la selección de usuario
-    const handleUserSelection = (btn) => {
-        selectedUserId = btn.dataset.id;
+    const fetchMessages = () => {
+        if (!selectedUserId) return;
 
-        if (!selectedUserId) {
-            alert("Error: No se seleccionó un usuario válido.");
-            return;
-        }
-
-        // Cargar historial del chat
         fetch("00cargar_historial.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -23,63 +16,70 @@ document.addEventListener("DOMContentLoaded", () => {
             .then((response) => response.json())
             .then((data) => {
                 if (data.error) {
-                    alert("Error al cargar historial: " + data.error);
-                } else {
-                    chatMessages.innerHTML = ""; // Limpia los mensajes previos
-                    if (data.length === 0) {
-                        chatMessages.innerHTML = "<p>No hay mensajes todavía.</p>";
-                    } else {
-                        data.forEach((message) => {
-                            const messageElement = document.createElement("div");
-                            messageElement.className = "message";
-                            messageElement.textContent = `${message.REMITENTE}: ${message.TEXT}`;
-                            chatMessages.appendChild(messageElement);
-                        });
-                    }
+                    console.error("Error al cargar mensajes:", data.error);
+                    return;
                 }
+
+                chatMessages.innerHTML = "";
+                if (data.length === 0) {
+                    chatMessages.innerHTML = "<p>No hay mensajes todavía.</p>";
+                } else {
+                    data.forEach((message) => {
+                        const messageElement = document.createElement("div");
+                        messageElement.className =
+                            message.REMITENTE === selectedUserId ? "message other" : "message self";
+
+                        const name = document.createElement("span");
+                        name.className = "message-name";
+                        name.textContent =
+                            message.REMITENTE === selectedUserId
+                                ? message.NOMBRE_REMITENTE
+                                : "Tú";
+
+                        const text = document.createElement("p");
+                        text.textContent = message.TEXT;
+
+                        messageElement.appendChild(name);
+                        messageElement.appendChild(text);
+                        chatMessages.appendChild(messageElement);
+                    });
+                }
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             })
             .catch((err) => console.error("Error al cargar historial:", err));
     };
 
-    // Agregar evento de clic a cada botón de usuario
-    document.querySelectorAll(".user-btn").forEach((btn) => {
-        btn.addEventListener("click", () => handleUserSelection(btn));
-    });
-
-    // Enviar mensaje
     sendMessageButton.addEventListener("click", () => {
-        const messageText = messageInput.value.trim();
-
-        if (!messageText) {
-            alert("Por favor escribe un mensaje.");
-            return;
-        }
-
-        if (!selectedUserId) {
-            alert("Por favor selecciona un usuario.");
+        const message = messageInput.value.trim();
+        if (!message || !selectedUserId) {
+            alert("Por favor selecciona un usuario y escribe un mensaje.");
             return;
         }
 
         fetch("00enviar_mensaje.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                destinatario: selectedUserId,
-                mensaje: messageText,
-            }),
+            body: JSON.stringify({ destinatario: selectedUserId, mensaje: message }),
         })
             .then((response) => response.json())
             .then((data) => {
                 if (data.error) {
                     alert("Error al enviar mensaje: " + data.error);
                 } else {
-                    const messageElement = document.createElement("div");
-                    messageElement.className = "message self";
-                    messageElement.textContent = `Tú: ${messageText}`;
-                    chatMessages.appendChild(messageElement);
-                    messageInput.value = ""; // Limpiar el campo de entrada
+                    messageInput.value = "";
+                    fetchMessages();
                 }
             })
             .catch((err) => console.error("Error al enviar mensaje:", err));
     });
+
+    userButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            selectedUserId = button.getAttribute("data-id");
+            document.getElementById("chat-title").textContent = `Chat con ${button.textContent}`;
+            fetchMessages();
+        });
+    });
+
+    setInterval(fetchMessages, 3000);
 });
