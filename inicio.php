@@ -133,7 +133,11 @@ session_start();
 
                 if ($resultado && $resultado->num_rows > 0) {
                     while ($curso = $resultado->fetch_assoc()) {
-                        $imagenSrc = !empty($curso["IMAGEN"]) ? 'uploads/' . htmlspecialchars($curso["IMAGEN"]) : 'path/to/default-image.jpg';
+                        
+                        $imagenSrc = !empty($curso["IMAGEN"]) 
+                    ? 'data:image/jpeg;base64,' . htmlspecialchars($curso["IMAGEN"]) 
+                     : 'path/to/default-image.jpg';
+
                         echo '<div class="course-card">';
                         echo '    <img src="' . $imagenSrc . '" alt="Curso ' . htmlspecialchars($curso["TITULO"]) . '">';
                         echo '    <div class="course-info">';

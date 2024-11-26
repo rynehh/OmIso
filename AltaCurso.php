@@ -28,15 +28,44 @@
                     <label for="costo" class="form-label">Costo</label>
                     <input type="number" class="form-control" id="costo" name="costo" placeholder="Costo del curso" required>
                 </div>
-                <div>
+                <div class="me-3">
                     <label for="niveles" class="form-label">Número de Niveles</label>
-                    <input type="number" class="form-control" id="niveles" name="niveles" value="0" readonly>
+                    <input type="number" class="form-control" id="niveles" name="niveles" value="0">
                 </div>
+                <div>
+                    <label for="categoria" class="form-label">Categoría</label>
+                    <select class="form-control" id="categoria" name="categoria" required>
+                        <option value="" disabled selected>Seleccione una categoría</option>
+                        <?php
+                        // Conexión a la base de datos
+                        include("00ConexionDB.php");
+
+                        // Consulta para obtener las categorías
+                        $query = "SELECT ID_CAT, NOMCAT FROM categoria";
+                        $resultado = mysqli_query($conex, $query);
+
+                        // Verificar si hay resultados
+                        if ($resultado && mysqli_num_rows($resultado) > 0) {
+                            while ($fila = mysqli_fetch_assoc($resultado)) {
+                                echo '<option value="' . htmlspecialchars($fila['ID_CAT']) . '">' . htmlspecialchars($fila['NOMCAT']) . '</option>';
+                            }
+                        } else {
+                            echo '<option value="">No hay categorías disponibles</option>';
+                        }
+
+                        // Cerrar la conexión
+                        mysqli_close($conex);
+                        ?>
+                    </select>
+
+                </div>
+                
             </div>
+
 
             <div class="mb-3">
                 <label for="imagen" class="form-label">Cargar Imagen</label>
-                <input class="form-control" type="file" id="imagen" name="imagen">
+                <input class="form-control" type="file" id="imagen" name="imagen" required>
             </div>
 
             <!-- Niveles dinámicos -->

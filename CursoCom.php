@@ -22,7 +22,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $sqlCurso->close();
 
     // Consulta para obtener los niveles del curso
-    $sqlNiveles = $conex->prepare("SELECT TITULO, TEXTO, VIDEO FROM NIVEL WHERE ID_CURSO = ?");
+    $sqlNiveles = $conex->prepare("SELECT TITULO, CONTENIDO, VIDEO FROM NIVEL WHERE ID_CURSO = ?");
     $sqlNiveles->bind_param("i", $curso_id);
     $sqlNiveles->execute();
     $resultNiveles = $sqlNiveles->get_result();
@@ -101,7 +101,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                         echo '    <div id="level' . $nivelIndex . 'Content" class="accordion-collapse collapse" aria-labelledby="level' . $nivelIndex . 'Heading" data-bs-parent="#courseAccordion">';
                         echo '        <div class="accordion-body">';
                         echo '            <video controls src="' . htmlspecialchars($nivel['VIDEO']) . '" class="w-100 mb-3"></video>';
-                        echo '            <p>' . htmlspecialchars($nivel['TEXTO']) . '</p>';
+                        echo '            <p>' . htmlspecialchars($nivel['CONTENIDO']) . '</p>';
                         echo '        </div>';
                         echo '    </div>';
                         echo '</div>';
