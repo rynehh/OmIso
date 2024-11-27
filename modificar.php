@@ -22,7 +22,7 @@ session_start();
 
                     <label for="foto-perfil">Foto de Perfil:</label >
                         <div class="custom-file">
-                        <input type="file" id="foto-perfil" value="<?php echo $_SESSION['pfp']; ?>" class="custom-file-input">
+                        <input type="file" name="foto-perfil" id="foto-perfil" value="<?php echo $_SESSION['pfp']; ?>" class="custom-file-input">
                        
                     </div>
 
