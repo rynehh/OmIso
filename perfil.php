@@ -60,16 +60,18 @@ if (isset($_SESSION['idUsuario']) && isset($_SESSION['nom'])) {
         </div>
 
         <div class="profile-content">
-            <h1>Tu Perfil</h1>
-            <p>Bienvenido, <?php echo htmlspecialchars($usuario['NOMBRE']); ?>.</p>
-            <p>Correo Electrónico: <?php echo htmlspecialchars($usuario['EMAIL']); ?></p>
-            <?php if (!empty($usuario['FOTO'])): ?>
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($usuario['FOTO']); ?>" alt="Foto de perfil" style="width: 150px; height: 150px; border-radius: 50%;">
-            <?php else: ?>
-                <img src="default-profile.png" alt="Foto de perfil predeterminada" style="width: 150px; height: 150px; border-radius: 50%;">
-            <?php endif; ?>
-            <p>Aquí puedes ver y gestionar tus cursos y acceder a tu información personal.</p>
-        </div>
+    <h1>Tu Perfil</h1>
+    <p>Bienvenido, <?php echo htmlspecialchars($usuario['NOMBRE']); ?>.</p>
+    <p>Correo Electrónico: <?php echo htmlspecialchars($usuario['EMAIL']); ?></p>
+
+    <?php if (!empty($usuario['FOTO'])): ?>
+            <img src="data:image/jpeg;base64,<?php echo $usuario['FOTO']; ?>" alt="Foto de perfil" style="width: 150px; height: 150px; border-radius: 50%;">
+        <?php else: ?>
+            <img src="default-profile.png" alt="Foto predeterminada" style="width: 150px; height: 150px; border-radius: 50%;">
+        <?php endif; ?>
+    <p>Aquí puedes ver y gestionar tus cursos y acceder a tu información personal.</p>
+</div>
+
     </main>    
     <footer>
         <div class="container">

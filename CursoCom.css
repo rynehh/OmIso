@@ -1,4 +1,4 @@
-/* Ajustes de la navbar */
+/* Estilo del header */
 header {
     background-color: #141e30;
     color: #fff;
@@ -46,9 +46,9 @@ header {
     transform: scale(1.1);
 }
 
-
+/* Configuración del cuerpo */
 body {
-    padding-top: 60px;
+    padding-top: 100px;
     font-family: 'Arial', sans-serif;
     background-color: #f5f5f5;
     color: #333;
@@ -63,35 +63,73 @@ body {
     flex: 1;
 }
 
+/* Configuración de niveles */
+.niveles-container {
+    margin-top: 20px;
+}
 
 .level {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f9f9f9;
 }
 
 .level h4 {
-    font-size: 22px;
     margin-bottom: 10px;
 }
 
 .level video {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.row{
-    margin-top: 70px;
+.btn-completar {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.progress {
-    height: 25px;
-    background-color: #e9ecef;
+.btn-completar:hover {
+    background-color: #218838;
+}
+
+.btn-completar:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* Barra de progreso */
+.progress-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 20px;
 }
 
 .progress-bar {
-    background-color: #28a745;
+    width: 0%; /* Comienza vacía */
+    height: 100%;
+    background-color: #4caf50; /* Color verde */
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 5px;
+    transition: width 0.5s ease-out; /* Suaviza el cambio de ancho */
 }
 
+
+/* Estilo del footer */
 footer {
     background-color: #141e30;
     color: white;

@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
     fetch("00MisCursos.php")
         .then(response => response.json())
@@ -12,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     row.innerHTML = `
                         <td><a href="CursoCom.php?id=${curso.ID_CURSO}">${curso.TITULO}</a></td>
                         <td>${curso.FECHA_INSCRIPCION || "Fecha no disponible"}</td>
-                        <td><a href="CursoCom.php?id=${curso.ID_CURSO}">Ver Curso</a></td>
+                        <td><a href="DetallesCurso.php?id=${curso.ID_CURSO}">Ver Curso</a></td>
                     `;
                     tbody.appendChild(row);
                 });

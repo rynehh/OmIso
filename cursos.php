@@ -124,35 +124,36 @@ session_start();
             
             <!-- Lista de cursos -->
             <div id="cursos-container">
-    <?php
-    // Consulta para obtener los cursos
-    $queryCursos = "SELECT CURSO.ID_CURSO, CURSO.TITULO, CURSO.DESCRIPCURSO, CURSO.COSTO, CURSO.FECHA_CREACION, CURSO.IMAGEN, USUARIO.NOMBRE AS INSTRUCTOR, CATEGORIA.NOMCAT AS CATEGORIA 
-    FROM CURSO
-    INNER JOIN USUARIO ON CURSO.ID_INSTRUCTOR = USUARIO.ID_USUARIO
-    INNER JOIN CATEGORIA ON CURSO.ID_CAT = CATEGORIA.ID_CAT";
+            <?php
+// Consulta para obtener los cursos
+$queryCursos = "SELECT CURSO.ID_CURSO, CURSO.TITULO, CURSO.DESCRIPCURSO, CURSO.COSTO, CURSO.IMAGEN FROM CURSO";
 $resultCursos = $conex->query($queryCursos);
 
 if ($resultCursos && $resultCursos->num_rows > 0) {
-while ($curso = $resultCursos->fetch_assoc()) {
-echo '<div class="course-card" data-categoria="' . htmlspecialchars($curso['CATEGORIA']) . '" data-instructor="' . htmlspecialchars($curso['INSTRUCTOR']) . '" data-fecha="' . htmlspecialchars($curso['FECHA_CREACION']) . '">';
-
-// Mostrar la imagen del curso desde la base de datos o una predeterminada si está vacía
-$imagen = !empty($curso["IMAGEN"]) ? 'ruta/a/imagenes/' . htmlspecialchars($curso["IMAGEN"]) : 'ruta_de_imagen_default.jpg';
-echo '    <img src="' . $imagen . '" alt="' . htmlspecialchars($curso["TITULO"]) . '">';
-
-echo '    <div class="course-content">';
-echo '        <h3>' . htmlspecialchars($curso["TITULO"]) . '</h3>';
-echo '        <p>' . htmlspecialchars($curso["DESCRIPCURSO"]) . '</p>';
-echo '        <span class="price">$' . htmlspecialchars($curso["COSTO"]) . '</span>';
-echo '        <a href="curso.php?id=' . htmlspecialchars($curso["ID_CURSO"]) . '" class="btn-buy">Comprar ahora</a>';
-echo '    </div>';
-echo '</div>';
-}
+    echo '<div id="cursos-container">';
+    while ($curso = $resultCursos->fetch_assoc()) {
+        echo '<div class="course-card">';
+        
+        // Mostrar imagen del curso o una predeterminada si no hay
+        if (!empty($curso['IMAGEN'])) {
+            echo '<img src="data:image/jpeg;base64,' . $curso['IMAGEN'] . '" alt="' . htmlspecialchars($curso['TITULO']) . '">';
+        } else {
+            echo '<img src="default-course.jpg" alt="Imagen predeterminada">';
+        }
+        
+        echo '<div class="course-content">';
+        echo '<h3>' . htmlspecialchars($curso["TITULO"]) . '</h3>';
+        echo '<p>' . htmlspecialchars($curso["DESCRIPCURSO"]) . '</p>';
+        echo '<span class="price">$' . htmlspecialchars($curso["COSTO"]) . '</span>';
+        echo '<a href="curso.php?id=' . htmlspecialchars($curso["ID_CURSO"]) . '" class="btn-buy">Comprar ahora</a>';
+        echo '</div>'; // course-content
+        echo '</div>'; // course-card
+    }
+    echo '</div>'; // cursos-container
 } else {
-echo '<p>No hay cursos disponibles en este momento.</p>';
+    echo '<p>No hay cursos disponibles en este momento.</p>';
 }
 ?>
-
 
 </div>
 

@@ -1,22 +1,11 @@
-/* Estilos generales */
-* {
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
+    background-color: #f4f4f9;
     color: #333;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* Menú de navegación */
 header {
     background-color: #141e30;
     color: #fff;
@@ -30,8 +19,9 @@ header {
 
 .navbar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 
 .navbar .logo {
@@ -43,7 +33,6 @@ header {
 .nav-links {
     list-style: none;
     display: flex;
-    align-items: center;
 }
 
 .nav-links li {
@@ -54,160 +43,155 @@ header {
     color: #fff;
     text-decoration: none;
     font-size: 1.2em;
-    transition: color 0.3s, transform 0.3s;
+    transition: color 0.3s ease-in-out;
 }
 
 .nav-links a:hover {
     color: #28a745;
-    transform: scale(1.1);
 }
 
-/* Contenedor principal */
-.profile-container {
+main {
+    margin-top: 80px;
+    padding: 20px;
+}
+
+/* Filtros de Kardex */
+.filtros-kardex {
     display: flex;
-    padding-top: 70px;
-}
-
-/* Sidebar */
-.sidebar {
-    width: 250px;
-    background-color: #f0f0f0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 20px;
-    height: 100vh;
-    position: fixed;
-    top: 70px;
-    left: 0;
-}
-
-.sidebar ul {
-    list-style: none;
-}
-
-.sidebar ul li {
-    margin-bottom: 15px;
-}
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: #141e30;
-    font-weight: bold;
-    display: block;
-    font-size: 1.2em;
-}
-
-.sidebar ul li a:hover {
-    color: #28a745;
-}
-
-/* Contenido principal del Kardex */
-.Kardex-content {
-    margin-left: 270px;
-    padding: 20px;
-    width: 100%;
-}
-
-.Kardex-content h1 {
-    font-size: 2.5em;
     margin-bottom: 20px;
-    animation: fadeIn 1s ease-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#kardex-table {
+.filtros-kardex div {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.filtros-kardex label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.filtros-kardex select,
+.filtros-kardex input[type="date"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.filtros-kardex select:focus,
+.filtros-kardex input[type="date"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.filtros-kardex .btn-filtrar {
+    flex: 1;
+    min-width: 100px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease-in-out;
+    margin: 10px;
+}
+
+.filtros-kardex .btn-filtrar:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividad para filtros */
+@media (max-width: 768px) {
+    .filtros-kardex {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filtros-kardex div {
+        width: 100%;
+    }
+
+    .filtros-kardex .btn-filtrar {
+        width: 100%;
+    }
+}
+
+
+
+
+.report-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.report-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.report-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
 }
 
-#kardex-table th, #kardex-table td {
-    padding: 12px;
+table th, table td {
+    padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-#kardex-table th {
+table th {
     background-color: #141e30;
-    color: #fff;
+    color: white;
 }
 
-#kardex-table tr:nth-child(even) {
+table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-#kardex-table tr:hover {
+table tr:hover {
     background-color: #f1f1f1;
 }
-
-/* Pie de página */
 footer {
     background-color: #141e30;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsividad de la tabla */
-@media (max-width: 768px) {
-    #kardex-table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-}
-
-/* Responsividad del chat */
-@media (max-width: 768px) {
-    .chat-window {
-        flex-direction: column;
-    }
-
-    .chat-users {
-        display: none;
-    }
-}
-
-
-.filtros-kardex {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.filtro-fechas, .filtro-categoria, .filtro-estado {
-    display: inline-block;
-}
-
-.btn-filtrar {
-    background-color: #28a745;
     color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 5px;
-    cursor: pointer;
-}
-
-.btn-filtrar:hover {
-    background-color: #218838;
-}
-
-.filtros-kardex select, .filtros-kardex input {
-    margin-right: 10px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9em;
 }

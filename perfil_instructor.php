@@ -91,11 +91,11 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] == 3 && isset($_SESSION['idUsuar
         <div class="profile-content">
             <h1>Bienvenido, <?php echo htmlspecialchars($instructor['NOMBRE']); ?>.</h1>
             <p>Correo Electrónico: <?php echo htmlspecialchars($instructor['EMAIL']); ?></p>
-            <?php if (!empty($instructor['FOTO'])): ?>
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($instructor['FOTO']); ?>" alt="Foto de perfil" style="width: 150px; height: 150px; border-radius: 50%;">
-            <?php else: ?>
-                <img src="default-profile.png" alt="Foto de perfil predeterminada" style="width: 150px; height: 150px; border-radius: 50%;">
-            <?php endif; ?>
+            <?php if (!empty($usuario['FOTO'])): ?>
+            <img src="data:image/jpeg;base64,<?php echo $usuario['FOTO']; ?>" alt="Foto de perfil" style="width: 150px; height: 150px; border-radius: 50%;">
+        <?php else: ?>
+            <img src="default-profile.png" alt="Foto predeterminada" style="width: 150px; height: 150px; border-radius: 50%;">
+        <?php endif; ?>
             <p>Aquí puedes gestionar los cursos que estás impartiendo.</p>
             <div id="detalles-curso" class="detalles-curso">
                 <!-- Aquí se mostrarán los detalles de los cursos -->

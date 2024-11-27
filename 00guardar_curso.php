@@ -78,18 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $uploadOk = 1;
                     $fileType = strtolower(pathinfo($rutaVideo, PATHINFO_EXTENSION));
 
-                    // Verificar si el archivo ya existe
-                    if (file_exists($rutaVideo)) {
-                        echo "<h2 class='Error'>El archivo $nombreArchivo ya existe en el servidor.</h2>";
-                        $uploadOk = 0;
-                    }
-
-                    // Verificar el tamaño del archivo (limite: 10MB)
-                    if ($_FILES['niveles']['size'][$index]['video'] > 10000000) {
-                        echo "<h2 class='Error'>El archivo $nombreArchivo es demasiado grande (máximo 10MB).</h2>";
-                        $uploadOk = 0;
-                    }
-
                     // Verificar el tipo de archivo
                     $tiposPermitidos = ['mp4', 'avi', 'mkv', 'mov'];
                     if (!in_array($fileType, $tiposPermitidos)) {
