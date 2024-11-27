@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        
         // Validar datos obligatorios
         if (empty($titulo) || empty($descripcion) || $costo <= 0 || $categoria <= 0) {
-            echo "<h2 class='Error'>Todos los campos del curso son obligatorios.</h2>";
+            echo "Todos los campos del curso son obligatorios.";
             exit;
         }
 
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if (!$stmtCurso->execute()) {
-            echo "<h2 class='Error'>Error al actualizar el curso: " . $stmtCurso->error . "</h2>";
+            echo "Error al actualizar el curso";
             exit;
         }
         $stmtCurso->close();
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     // Mover archivo al servidor
                     if (!move_uploaded_file($_FILES['niveles']['tmp_name']['video'], $rutaVideo)) {
-                        echo "<h2 class='Error'>Error al subir el video: $nombreArchivo</h2>";
+                        echo "Error al subir el video: $nombreArchivo";
                         $rutaVideo = null;
                     }
                 }
@@ -74,9 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        echo "<h2 class='Exitoso'>¡Curso actualizado y niveles nuevos agregados exitosamente!</h2>";
+        echo "¡Curso actualizado y niveles nuevos agregados exitosamente!";
     } else {
-        echo "<h2 class='Error'>Datos incompletos. Por favor, verifica el formulario.</h2>";
+        echo "Datos incompletos. Por favor, verifica el formulario.";
     }
 }
 ?>

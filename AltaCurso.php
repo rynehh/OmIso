@@ -75,10 +75,10 @@
                 <button type="button" class="btn btn-primary" onclick="agregarNiveles()">Agregar Nivel</button>
             </div>
 
-            <div class="mb-3">
+            <!--<div class="mb-3">
                 <label for="recursos" class="form-label">Recursos</label>
                 <input class="form-control" type="file" id="recursos" name="recursos">
-            </div>
+            </div> -->
 
             <!-- Botones de Guardar y Cancelar -->
             <div class="d-flex justify-content-between">

@@ -35,12 +35,79 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] == 3 && isset($_SESSION['idUsuar
 }
 ?>
 
+<?php
+include("00ConexionDB.php");
+session_start();
+
+// Verificar si el usuario es un instructor y tiene su sesión iniciada
+if (!isset($_SESSION['idUsuario']) || $_SESSION['rol'] != 3) {
+    die("Error: Usuario no autenticado o no es un instructor.");
+}
+
+$idInstructor = $_SESSION['idUsuario'];
+
+// Obtener los cursos, alumnos inscritos y total de ingresos (solo cursos propios del instructor)
+$queryGeneral = "
+    SELECT 
+        c.TITULO AS nombre_curso,
+        COUNT(uc.ID_USUARIO) AS alumnos_inscritos,
+        COALESCE(SUM((SELECT COSTO FROM curso WHERE ID_CURSO = uc.ID_CURSO)), 0) AS ingresos_totales
+    FROM curso c
+    LEFT JOIN usuario_curso uc ON c.ID_CURSO = uc.ID_CURSO
+    WHERE c.BAJA = 0 AND c.ID_INSTRUCTOR = ? -- Solo cursos activos del instructor autenticado
+    GROUP BY c.TITULO;
+";
+$stmtGeneral = $conex->prepare($queryGeneral);
+$stmtGeneral->bind_param("i", $idInstructor);
+$stmtGeneral->execute();
+$resultGeneral = $stmtGeneral->get_result();
+
+// Obtener ingresos desglosados (solo cursos propios del instructor)
+$queryDetalle = "
+    SELECT 
+        c.TITULO AS nombre_curso,
+        uc.FECHA_INSCRIPCION,
+        uc.FROMAPAGO AS forma_pago,
+        (SELECT COSTO FROM curso WHERE ID_CURSO = uc.ID_CURSO) AS ingreso
+    FROM usuario_curso uc
+    INNER JOIN curso c ON uc.ID_CURSO = c.ID_CURSO
+    WHERE c.ID_INSTRUCTOR = ? -- Solo cursos del instructor autenticado
+";
+$stmtDetalle = $conex->prepare($queryDetalle);
+$stmtDetalle->bind_param("i", $idInstructor);
+$stmtDetalle->execute();
+$resultDetalle = $stmtDetalle->get_result();
+
+// Calcular el total de ingresos (solo cursos propios del instructor)
+$queryTotalIngresos = "
+    SELECT SUM((SELECT COSTO FROM curso WHERE ID_CURSO = uc.ID_CURSO)) AS total_ingresos
+    FROM usuario_curso uc
+    INNER JOIN curso c ON uc.ID_CURSO = c.ID_CURSO
+    WHERE c.ID_INSTRUCTOR = ? -- Solo cursos del instructor autenticado
+";
+$stmtTotal = $conex->prepare($queryTotalIngresos);
+$stmtTotal->bind_param("i", $idInstructor);
+$stmtTotal->execute();
+$resultTotal = $stmtTotal->get_result();
+$totalIngresos = $resultTotal->fetch_assoc()['total_ingresos'] ?? 0;
+
+// Cerrar los statements
+$stmtGeneral->close();
+$stmtDetalle->close();
+$stmtTotal->close();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Instructor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet" href="perfil_instructor.css">
 </head>
 <body>
@@ -103,6 +170,71 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] == 3 && isset($_SESSION['idUsuar
                 style="width: 150px; height: 150px; border-radius: 50%;">
         <?php endif; ?>
             <p>Aquí puedes gestionar los cursos que estás impartiendo.</p>
+
+            <!-- Botón para abrir el modal -->
+            <button id="btnReportes" class="btn btn-primary">Ver Reporte General</button>
+
+            <!-- Modal -->
+            <div id="modalReportes" class="modal fade" tabindex="-1" aria-labelledby="modalReportesLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalReportesLabel">Reporte General de Cursos</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Tabla general -->
+                            <h6>Cursos Ofrecidos</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Curso</th>
+                                        <th>Alumnos Inscritos</th>
+                                        <th>Ingresos Totales</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php while ($row = mysqli_fetch_assoc($resultGeneral)): ?>
+                                        <tr>
+                                            <td><?= htmlspecialchars($row['nombre_curso']) ?></td>
+                                            <td><?= $row['alumnos_inscritos'] ?></td>
+                                            <td>$<?= number_format($row['ingresos_totales'], 2) ?></td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                </tbody>
+                            </table>
+
+                            <!-- Tabla desglosada -->
+                            <h6>Ingresos Desglosados</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Curso</th>
+                                        <th>Fecha Inscripción</th>
+                                        <th>Forma de Pago</th>
+                                        <th>Ingreso</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php while ($row = mysqli_fetch_assoc($resultDetalle)): ?>
+                                        <tr>
+                                            <td><?= htmlspecialchars($row['nombre_curso']) ?></td>
+                                            <td><?= $row['FECHA_INSCRIPCION'] ?></td>
+                                            <td><?= $row['forma_pago'] ?></td>
+                                            <td>$<?= number_format($row['ingreso'], 2) ?></td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                </tbody>
+                            </table>
+
+                            <!-- Total de ingresos -->
+                            <h6 class="mt-4">Total de Ingresos: <strong>$<?= number_format($totalIngresos, 2) ?></strong></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div id="detalles-curso" class="detalles-curso">
                 <!-- Aquí se mostrarán los detalles de los cursos -->
                 <p>Haz clic en un curso para ver los alumnos inscritos, el pago y las actividades.</p>

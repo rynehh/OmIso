@@ -64,24 +64,22 @@ session_start();
 
             <!-- Categoría (desplegable) -->
             <div class="categoria">
-                <button class="categoria-btn">Categoría</button>
-                <div class="dropdown-content">
-                    <?php
-                    include("00ConexionDB.php");
+            <button class="categoria-btn">Categoría</button>
+            <div class="dropdown-content">
+                <?php
+                // Consulta para obtener las categorías
+                $queryCategorias = "SELECT ID_CAT, NOMCAT FROM CATEGORIA";
+                $resultCategorias = $conex->query($queryCategorias);
 
-                    // Consulta para obtener las categorías
-                    $queryCategorias = "SELECT NOMCAT FROM CATEGORIA";
-                    $resultCategorias = $conex->query($queryCategorias);
-
-                    if ($resultCategorias && $resultCategorias->num_rows > 0) {
-                        while ($categoria = $resultCategorias->fetch_assoc()) {
-                            echo '<button class="btn-etiqueta" onclick="filtrarPorEtiqueta(\'' . htmlspecialchars($categoria['NOMCAT']) . '\')">' . htmlspecialchars($categoria['NOMCAT']) . '</button>';
-                        }
-                    } else {
-                        echo '<p>No hay categorías disponibles</p>';
+                if ($resultCategorias && $resultCategorias->num_rows > 0) {
+                    while ($categoria = $resultCategorias->fetch_assoc()) {
+                        echo '<button class="btn-etiqueta" onclick="filtrarPorEtiqueta(' . htmlspecialchars($categoria['ID_CAT']) . ')">' . htmlspecialchars($categoria['NOMCAT']) . '</button>';
                     }
-                    ?>
-                </div>
+                } else {
+                    echo '<p>No hay categorías disponibles</p>';
+                }
+                ?>
+            </div>
             </div>
 
             <!-- Filtro por fecha -->
@@ -107,12 +105,12 @@ session_start();
                         <option value="" disabled selected>Selecciona un instructor</option>
                         <?php
                         // Consulta para obtener los nombres de los instructores
-                        $queryInstructores = "SELECT DISTINCT NOMBRE FROM USUARIO WHERE ROL = 3";
+                        $queryInstructores = "SELECT ID_USUARIO, NOMBRE FROM USUARIO WHERE ROL = 3";
                         $resultInstructores = $conex->query($queryInstructores);
 
                         if ($resultInstructores && $resultInstructores->num_rows > 0) {
                             while ($instructor = $resultInstructores->fetch_assoc()) {
-                                echo '<option value="' . htmlspecialchars($instructor['NOMBRE']) . '">' . htmlspecialchars($instructor['NOMBRE']) . '</option>';
+                                echo '<option value="' . htmlspecialchars($instructor['ID_USUARIO']) . '">' . htmlspecialchars($instructor['NOMBRE']) . '</option>';
                             }
                         } else {
                             echo '<option disabled>No hay instructores disponibles</option>';

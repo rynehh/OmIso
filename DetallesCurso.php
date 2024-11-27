@@ -85,18 +85,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['calificacion'])) {
             $stmtUpdate->bind_param("ii", $calificacion, $idUsuc);
 
             if ($stmtUpdate->execute()) {
-                // Llamar al procedimiento almacenado para calcular el promedio
-                $queryPromedio = "CALL CALCULAR_PROMEDIO_CURSO(?)";
-                $stmtPromedio = $conex->prepare($queryPromedio);
-                $stmtPromedio->bind_param("i", $idCurso);
-
-                if ($stmtPromedio->execute()) {
+                
                     $mensajeCalificacion = "Calificación actualizada correctamente y promedio recalculado.";
-                } else {
-                    $mensajeCalificacion = "Error al calcular el promedio.";
-                }
-
-                $stmtPromedio->close();
+               
             } else {
                 $mensajeCalificacion = "Error al actualizar la calificación.";
             }

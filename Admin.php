@@ -57,6 +57,7 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] == 1 && isset($_SESSION['idUsuar
             <ul>
                 <li><a href="UsuariosDes.php">Usuarios Deshabilitados</a></li>
                 <li><a href="Categorias.php">Categorías</a></li>
+                <li><a href="ReporteAdmin.php">Reportes de Usuario</a></li>
                 <li><a href="modificar.php">Editar Perfil</a></li>
             </ul>
         </div>
@@ -67,10 +68,16 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] == 1 && isset($_SESSION['idUsuar
             <p>Bienvenido, <?php echo htmlspecialchars($usuario['NOMBRE']); ?>.</p>
             <p>Correo Electrónico: <?php echo htmlspecialchars($usuario['EMAIL']); ?></p>
             <?php if (!empty($usuario['FOTO'])): ?>
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($usuario['FOTO']); ?>" alt="Foto de perfil" style="width: 150px; height: 150px; border-radius: 50%;">
-            <?php else: ?>
-                <img src="default-profile.png" alt="Foto de perfil predeterminada" style="width: 150px; height: 150px; border-radius: 50%;">
-            <?php endif; ?>
+            <!-- Mostrar la imagen de perfil en caso de que exista -->
+            <img src="data:image/jpeg;base64,<?php echo htmlspecialchars($usuario['FOTO']); ?>" 
+                alt="Foto de perfil" 
+                style="width: 150px; height: 150px; border-radius: 50%;">
+        <?php else: ?>
+            <!-- Mostrar una imagen predeterminada si no hay foto cargada -->
+            <img src="default-profile.png" 
+                alt="Foto predeterminada" 
+                style="width: 150px; height: 150px; border-radius: 50%;">
+        <?php endif; ?>
             <p>Gestiona Usuarios y Categorías desde este panel.</p>
         </div>
     </main>

@@ -48,6 +48,7 @@ if ($result && $result->num_rows > 0) {
             <ul>
                 <li><a href="UsuariosDes.php">Usuarios Deshabilitados</a></li>
                 <li><a href="Categorias.php">Categorías</a></li>
+                <li><a href="ReporteAdmin.php">Reportes de Usuario</a></li>
             </ul>
         </div>
 

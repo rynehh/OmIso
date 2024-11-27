@@ -18,8 +18,8 @@ function mostrarDetallesCurso(cursoId) {
                 data.alumnos.forEach(alumno => {
                     contenido += `
                         <li>
-                            <button class="btn-alumno" onclick="mostrarDetallesAlumno('${alumno.NOMBRE}', '${alumno.NIVEL_COMPLETADO}')">
-                                ${alumno.NOMBRE} - $${alumno.PAGO ?? '0.00'} - <strong>Actividades asignadas: ${alumno.ACTIVIDADES ? 'Sí' : 'No'}</strong>
+                            <button class="btn-alumno" onclick="mostrarDetallesAlumno(${cursoId}, ${alumno.ID_USUARIO})">
+                                ${alumno.NOMBRE}
                             </button>
                         </li>`;
                 });
@@ -28,7 +28,6 @@ function mostrarDetallesCurso(cursoId) {
             }
             contenido += `</ul>`;
 
-            // Actualizar el contenido en el div de detalles del curso
             detallesCurso.innerHTML = contenido;
         })
         .catch(error => {
@@ -37,16 +36,31 @@ function mostrarDetallesCurso(cursoId) {
 }
 
 
-function mostrarDetallesAlumno(nombre, nivel) {
-    let detallesAlumno = document.getElementById('detalles-alumno');
-    let contenido = `
-        <h3>Detalles del Alumno: ${nombre}</h3>
-        <p>Nivel completado: ${nivel}</p>
-    `;
+function mostrarDetallesAlumno(cursoId, usuarioId) {
+    fetch(`obtenerDetallesAlumno.php?curso_id=${cursoId}&usuario_id=${usuarioId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error(data.error);
+                return;
+            }
 
-    // Actualizar el contenido en el div de detalles del alumno
-    detallesAlumno.innerHTML = contenido;
+            let detallesAlumno = document.getElementById('detalles-alumno');
+            let contenido = `
+                <h3>Detalles del Alumno: ${data.nombre_alumno}</h3>
+                <p>Fecha de inscripción: ${data.fecha_inscripcion}</p>
+                <p>Curso terminado: ${data.curso_terminado}</p>
+                <p>Precio del curso: $${parseFloat(data.precio_curso).toFixed(2)}</p>
+                <p>Forma de pago: ${data.forma_pago}</p>
+            `;
+
+            detallesAlumno.innerHTML = contenido;
+        })
+        .catch(error => {
+            console.error("Error al obtener los detalles del alumno:", error);
+        });
 }
+
 
 function eliminarCurso(cursoId) {
     console.log("Intentando eliminar curso con ID:", cursoId);
@@ -72,3 +86,38 @@ function eliminarCurso(cursoId) {
 function editarCurso(cursoId) {
     window.location.href = `EditarCurso.php?curso_id=${cursoId}`;
 }
+
+document.getElementById("btnReportes").addEventListener("click", function () {
+    const modal = new bootstrap.Modal(document.getElementById("modalReportes"));
+    modal.show();
+});
+
+function aplicarFiltros() {
+    const categoria = document.getElementById("categoriaCurso").value;
+    const fechaInicio = document.getElementById("fechaInicio").value;
+    const fechaFin = document.getElementById("fechaFin").value;
+    const soloActivos = document.getElementById("soloActivos").checked ? 1 : 0;
+
+    // Realizar una petición AJAX al servidor para filtrar los datos
+    fetch("filtros_reportes.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            categoria,
+            fechaInicio,
+            fechaFin,
+            soloActivos,
+        }),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            // Actualizar las tablas con los datos filtrados
+            document.getElementById("tablaCursos").innerHTML = data.cursosHTML;
+            document.getElementById("tablaIngresos").innerHTML = data.ingresosHTML;
+            document.getElementById("totalIngresos").textContent = `$${data.totalIngresos.toFixed(2)}`;
+        })
+        .catch((error) => console.error("Error:", error));
+}
+

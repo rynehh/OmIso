@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
             $Foto = base64_encode(file_get_contents($_FILES['imagen']['tmp_name']));
         } else {
-            echo "<h2 class='Error'>-No se seleccionó imagen</h2>";
+            echo "No se seleccionó imagen";
             exit;
         }
 
@@ -33,14 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sql = $conex->prepare($insertar);
 
         if (!$sql) {
-            echo "<h2 class='Error'>Error en la preparación del SQL: " . $conex->error . "</h2>";
+            echo "Error en la preparación del SQL";
             exit;
         }
 
         $sql->bind_param("isdsdsiii", $categoria, $titulo, $costo, $descripcion, $calificacion, $Foto, $nivelCount, $baja, $instructorId);
 
         if (!$sql->execute()) {
-            echo "<h2 class='Error'>Error en la ejecución del SQL: " . $sql->error . "</h2>";
+            echo "Error en la ejecución del SQL";
             exit;
         }
 
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $row = $result->fetch_assoc();
             $curso_id = $row['id'];
         } else {
-            echo "<h2 class='Error'>No se pudo recuperar el ID del curso.</h2>";
+            echo "No se pudo recuperar el ID del curso";
             exit;
         }
 
@@ -81,17 +81,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // Verificar el tipo de archivo
                     $tiposPermitidos = ['mp4', 'avi', 'mkv', 'mov'];
                     if (!in_array($fileType, $tiposPermitidos)) {
-                        echo "<h2 class='Error'>El archivo $nombreArchivo tiene un formato no permitido. Solo se permiten MP4, AVI, MKV y MOV.</h2>";
+                        echo "El archivo $nombreArchivo tiene un formato no permitido. Solo se permiten MP4, AVI, MKV y MOV.";
                         $uploadOk = 0;
                     }
 
                     // Intentar mover el archivo si pasa todas las validaciones
                     if ($uploadOk == 1) {
                         if (!move_uploaded_file($_FILES['niveles']['tmp_name'][$index]['video'], $rutaVideo)) {
-                            echo "<h2 class='Error'>Error al subir el archivo $nombreArchivo al servidor.</h2>";
+                            echo "Error al subir el archivo $nombreArchivo al servidor.";
                             $rutaVideo = null; // No guardar ruta si no se subió correctamente
                         } else {
-                            echo "<h2 class='Exitoso'>El archivo $nombreArchivo se subió correctamente.</h2>";
+                            echo "El archivo $nombreArchivo se subió correctamente.";
                         }
                     } else {
                         $rutaVideo = null; // No guardar ruta si hubo algún problema
@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $sqlNivel->bind_param("issds", $curso_id, $nivelTitulo, $nivelContenido, $nivelCosto, $rutaVideo);
 
                 if (!$sqlNivel->execute()) {
-                    echo "<h2 class='Error'>Error al ejecutar el SQL de nivel: " . $sqlNivel->error . "</h2>";
+                    echo "Error al ejecutar el SQL de nivel";
                     exit;
                 }
 
@@ -115,9 +115,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        echo "<h2 class='Exitoso'>¡Curso y niveles guardados exitosamente!</h2>";
+        echo "¡Curso y niveles guardados exitosamente!";
     } else {
-        echo "<h2 class='Error'>Datos incompletos o usuario no autenticado.</h2>";
+        echo "Datos incompletos o usuario no autenticado";
     }
 }
 ?>
