@@ -21,6 +21,7 @@ $resultCategorias = mysqli_query($conex, $queryCategorias);
 $queryKardex = "
     SELECT 
         c.TITULO AS nombre_curso, 
+        c.ID_CURSO,
         uc.FECHA_INSCRIPCION, 
         MAX(nc.FECHA_COMPLETADO) AS fecha_fin,
         MAX(nc.FECHA_COMPLETADO) AS ultima_actividad,
@@ -33,6 +34,7 @@ $queryKardex = "
     LEFT JOIN niveles_completados nc ON n.ID_NIV = nc.ID_NIV AND nc.ID_USUARIO = uc.ID_USUARIO
     WHERE uc.ID_USUARIO = ?
 ";
+
 
 // Aplicar filtros
 if (!empty($filtroFechaInicio) && !empty($filtroFechaFin)) {
@@ -157,11 +159,11 @@ $resultKardex = $stmtKardex->get_result();
                                 <td><?= htmlspecialchars($row['FECHA_INSCRIPCION']) ?></td>
                                 <td><?= $row['fecha_fin'] ? $row['fecha_fin'] : "Sin fecha" ?></td>
                                 <td>
-                                    <?php if ($row['progreso'] == 100): ?>
-                                        <a href="certificado.php?id=<?= urlencode($row['nombre_curso']) ?>" class="btn btn-success">Ver Certificado</a>
-                                    <?php else: ?>
-                                        <span class="text-muted">En progreso</span>
-                                    <?php endif; ?>
+                                <?php if ($row['progreso'] == 100): ?>
+                                    <a href="certificado.php?id=<?= urlencode($row['ID_CURSO']) ?>" class="btn btn-success">Ver Certificado</a>
+                                <?php else: ?>
+                                    <span class="text-muted">En progreso</span>
+                                <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endwhile; ?>

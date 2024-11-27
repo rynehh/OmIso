@@ -9,15 +9,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: #f7f7f7;
 }
 
 .certificate {
     width: 800px;
-    height: 600px;
+    height: 630px;
     background-color: #ffffff;
-    border: 5px solid 	#b181ff;
+    border: 5px solid #b181ff;
     padding: 40px;
     text-align: center;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -26,12 +27,13 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    
+    overflow: hidden; /* Para que el fondo no sobresalga */
 }
 
 .header {
     margin-bottom: 40px;
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté encima de la marca de agua */
 }
 
 .logo {
@@ -50,15 +52,21 @@ h1 {
     font-size: 28px;
     margin-bottom: 20px;
     color: #660066;
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté encima de la marca de agua */
 }
 
 .content p {
     font-size: 20px;
     color: #333;
+    position: relative;
+    z-index: 1;
 }
 
 .footer {
     margin-top: 60px;
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté encima de la marca de agua */
 }
 
 .footer p {
@@ -69,4 +77,47 @@ h1 {
 .footer strong {
     font-size: 24px;
     color: #6d33b4;
+}
+
+.certificatewatermark::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; /* Ajusta el tamaño del fondo */
+    height: 600px;
+    background-image: url('logo2.png'); /* Ruta del logo */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.08; /* Ajusta la opacidad para que sea más sutil */
+    z-index: 0; /* Envía el fondo detrás del contenido */
+    pointer-events: none; /* Para que no interfiera con los elementos interactivos */
+}
+
+/* Contenedor del botón para PDF */
+.save-pdf-container {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-pdf {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #6d33b4;
+    background-color: #fff;
+    border: 2px solid #6d33b4;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+.btn-pdf:hover {
+    background-color: #6d33b4;
+    color: #fff;
+    transform: scale(1.1);
 }
