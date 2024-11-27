@@ -5,7 +5,7 @@ if (isset($_GET['curso_id'])) {
     $cursoId = $_GET['curso_id'];
 
     // Obtener los detalles del curso
-    $queryCurso = "SELECT TITULO FROM CURSO WHERE ID_CURSO = ?";
+    $queryCurso = "SELECT TITULO, ID_CURSO FROM CURSO WHERE ID_CURSO = ?";
     $stmtCurso = $conex->prepare($queryCurso);
     $stmtCurso->bind_param("i", $cursoId);
     $stmtCurso->execute();

@@ -22,7 +22,7 @@ session_start();
 
                     <label for="foto-perfil">Foto de Perfil:</label >
                         <div class="custom-file">
-                        <input type="file" id="foto-perfil" value="<?php echo $_SESSION['pfp']; ?>" class="custom-file-input" required>
+                        <input type="file" id="foto-perfil" value="<?php echo $_SESSION['pfp']; ?>" class="custom-file-input">
                        
                     </div>
 
@@ -47,7 +47,7 @@ session_start();
                     <label for="confirm-password">Confirmar contraseña:</label>
                     <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirma tu contraseña" required>
 
-                    <button type="submit" id="btnedit" name="btnedit">Registrarse</button>
+                    <button type="submit" id="btnedit" name="btnedit">Modificar</button>
 
                     <p id="error-message" class="error-message"></p>
 
@@ -56,13 +56,13 @@ session_start();
             </div>
             <!-- Sección del Logo a la derecha -->
             <div class="login-logo">
-                <img src="logo.jpg" alt="Logo de la empresa">
+                <img src="logo.png" alt="Logo de la empresa">
             </div>
         </div>
     </div>
     <?php
 	include ("00ConexionEditUser.php");
 	?>
-    <script src="registro.js"></script>
+    <script src="editarPerfil.js"></script>
 </body>
 </html>

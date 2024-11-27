@@ -65,7 +65,7 @@
             </div>
             <!-- Sección del Logo a la derecha -->
             <div class="login-logo">
-                <img src="logo.jpg" alt="Logo de la empresa">
+                <img src="logo.png" alt="Logo de la empresa">
             </div>
         </div>
     </div>

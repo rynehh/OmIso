@@ -3,7 +3,8 @@ include("00ConexionDB.php");
 
 $val = 1;
 
-if(isset($_POST['btnedit'])) {
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    session_start();
     if(
         isset($_POST['genero']) &&
         isset($_POST['name']) &&

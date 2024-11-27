@@ -22,7 +22,7 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] == 3 && isset($_SESSION['idUsuar
     $stmtInstructor->close();
 
     // Consulta para obtener los cursos del instructor
-    $queryCursos = "SELECT ID_CURSO, TITULO FROM curso WHERE ID_INSTRUCTOR = ?";
+    $queryCursos = "SELECT ID_CURSO, TITULO FROM curso WHERE ID_INSTRUCTOR = ? AND BAJA = 0";
     $stmtCursos = $conex->prepare($queryCursos);
     $stmtCursos->bind_param("i", $idInstructor);
     $stmtCursos->execute();
@@ -91,10 +91,16 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] == 3 && isset($_SESSION['idUsuar
         <div class="profile-content">
             <h1>Bienvenido, <?php echo htmlspecialchars($instructor['NOMBRE']); ?>.</h1>
             <p>Correo Electrónico: <?php echo htmlspecialchars($instructor['EMAIL']); ?></p>
-            <?php if (!empty($usuario['FOTO'])): ?>
-            <img src="data:image/jpeg;base64,<?php echo $usuario['FOTO']; ?>" alt="Foto de perfil" style="width: 150px; height: 150px; border-radius: 50%;">
+            <?php if (!empty($instructor['FOTO'])): ?>
+            <!-- Mostrar la imagen de perfil en caso de que exista -->
+            <img src="data:image/jpeg;base64,<?php echo htmlspecialchars($instructor['FOTO']); ?>" 
+                alt="Foto de perfil" 
+                style="width: 150px; height: 150px; border-radius: 50%;">
         <?php else: ?>
-            <img src="default-profile.png" alt="Foto predeterminada" style="width: 150px; height: 150px; border-radius: 50%;">
+            <!-- Mostrar una imagen predeterminada si no hay foto cargada -->
+            <img src="default-profile.png" 
+                alt="Foto predeterminada" 
+                style="width: 150px; height: 150px; border-radius: 50%;">
         <?php endif; ?>
             <p>Aquí puedes gestionar los cursos que estás impartiendo.</p>
             <div id="detalles-curso" class="detalles-curso">

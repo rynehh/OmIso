@@ -49,7 +49,7 @@ include("00ConexionDB.php");
                 </thead>
                 <tbody>
                     <?php
-                    $query = "SELECT ID_CAT, NOMCAT, DESCRIP FROM categoria";
+                    $query = "SELECT ID_CAT, NOMCAT, DESCRIP FROM categoria where CATELIM = 0";
                     $result = $conex->query($query);
 
                     if ($result && $result->num_rows > 0) {
@@ -96,6 +96,35 @@ include("00ConexionDB.php");
             </div>
         </div>
     </div>
+
+        <!-- Modal para editar categoría -->
+    <div class="modal fade" id="modalEditarCat" tabindex="-1" aria-labelledby="modalEditarCatLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditarCatLabel">Editar Categoría</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editarCategoriaForm">
+                        <input type="hidden" id="editarCategoriaId"> <!-- Campo oculto para el ID -->
+                        <div class="mb-3">
+                            <label for="editarNombreCat" class="form-label">Nombre de la Categoría</label>
+                            <input type="text" class="form-control" id="editarNombreCat" placeholder="Nombre de la categoría">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editarDescCat" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="editarDescCat" rows="3" placeholder="Descripción de la categoría"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="guardarCambiosCatBtn">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="categorias.js"></script>

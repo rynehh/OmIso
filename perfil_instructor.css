@@ -188,3 +188,34 @@ header {
 .detalles-curso ul li {
     padding: 5px 0;
 }
+
+.curso-detalle-botones button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.btn-editar {
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-eliminar {
+    background-color: #f44336;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-editar:hover {
+    background-color: #2f702f;
+    transform: scale(1.02);
+}
+
+.btn-eliminar:hover {
+    background-color: #821414;
+    transform: scale(1.02);
+}
