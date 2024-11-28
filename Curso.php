@@ -337,7 +337,7 @@ if ($precioCurso == 0) {
             <p class="mt-3 text-success"><?php echo htmlspecialchars($message); ?></p>
         <?php endif; ?>
     <?php else: ?>
-        <button class="btn btn-primary btn-lg w-100" onclick="window.location.href='comprar.php?id=<?php echo $idCurso; ?>';">
+        <button class="btn btn-primary btn-lg w-100" onclick="window.location.href='checkout.php?id=<?php echo $idCurso; ?>';">
             Comprar Curso
         </button>
     <?php endif; ?>
