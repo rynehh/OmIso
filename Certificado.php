@@ -66,15 +66,20 @@ $fechaFinalizacion = htmlspecialchars($row['fecha_termino']);
     <div class="certificate" id="certificado">
         <div class="certificatewatermark">
             <div class="header">
+                <h3>OmIso Otorga el presente</h3>
                 <h1>Certificado de Finalización</h1>
+                <p>Por haber concluido de manera</p>
+                <p>satisfactoria el curso de:</p>
             </div>
 
             <div class="content">
                 <h2><?= $nombreCurso ?></h2>
-                <p>Instructor: <strong><?= $nombreInstructor ?></strong></p>
+                <p>Impartido por el instructor:</p>
+                <p><strong><?= $nombreInstructor ?></strong></p>
             </div>
 
             <div class="footer">
+                <h3>Al alumno:</h3>
                 <p><strong><?= $nombreAlumno ?></strong></p>
                 <p>Fecha de Finalización: <strong><?= $fechaFinalizacion ?></strong></p>
             </div>

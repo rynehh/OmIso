@@ -31,7 +31,7 @@ body {
 }
 
 .header {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     position: relative;
     z-index: 1; /* Asegura que el contenido esté encima de la marca de agua */
 }
@@ -50,7 +50,7 @@ h1 {
 
 .content h2 {
     font-size: 28px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: #660066;
     position: relative;
     z-index: 1; /* Asegura que el contenido esté encima de la marca de agua */
@@ -64,7 +64,7 @@ h1 {
 }
 
 .footer {
-    margin-top: 60px;
+    margin-top: 30px;
     position: relative;
     z-index: 1; /* Asegura que el contenido esté encima de la marca de agua */
 }
