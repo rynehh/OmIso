@@ -128,7 +128,7 @@ $stmtTotal->close();
                             <li><a href="chat_instructor.php">Chat</a></li>
                         <?php endif; ?>
                     <?php endif; ?>
-                    <li><a href="logout.php">Cerrar sesión</a></li>
+                    <li><a href="00CerrarSesion.php">Cerrar sesión</a></li>
                 </ul>
             </div>
         </nav>
