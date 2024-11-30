@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function actualizarProgreso(nivelesCompletados) {
         const totalNiveles = niveles.length;
         const porcentaje = (nivelesCompletados / totalNiveles) * 100;
-        progressBar.style.width = porcentaje + "%";
+        progressBar.style.width = `${porcentaje}%`;
         progressBar.textContent = Math.round(porcentaje) + "%";
     }
 
@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     const siguienteNivel = document.querySelector(`.level[data-nivel="${nivelId + 1}"]`);
                     if (siguienteNivel) {
                         siguienteNivel.style.display = "block";
+                    }   else {
+                        // Si no hay más niveles, mostrar alerta de curso completado
+                        alert("¡Felicidades, Curso completado!");
                     }
 
                     // Actualizar barra de progreso

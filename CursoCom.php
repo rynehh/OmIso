@@ -161,13 +161,13 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             <aside class="col-md-4">
                 <section class="mb-4">
                     <h2>Progreso del curso</h2>
-                    <div class="progress">
+                    <div class="progress-container">
    <div class="progress">
-    <div id="progress-bar" class="progress-bar" style="width: <?php echo round($progreso); ?>%;">
+    <div id="progress-bar" name="progress-bar" class="progress-bar" style="width: <?php echo round($progreso); ?>%;">
         <?php echo round($progreso); ?>%
     </div>
 </div>
-</div>
+    <!--</div>
 
                 </section>
 
@@ -180,7 +180,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 </section>
             </aside>
         </div>
-    </div>
+    </div>-->
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
