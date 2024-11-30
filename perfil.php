@@ -1,31 +1,35 @@
 <?php
-include("00ConexionDB.php");
+include("00ConexionDB.php"); // Incluye la conexión a la base de datos
 session_start();
 
-// Verificar si el usuario tiene sesión iniciada
-if (isset($_SESSION['idUsuario']) && isset($_SESSION['nom'])) {
+// Verificar si el usuario tiene rol de administrador (ROL = 2) y está autenticado
+if (isset($_SESSION['rol']) && $_SESSION['rol'] == 2 && isset($_SESSION['idUsuario'])) {
     $idUsuario = $_SESSION['idUsuario'];
 
-    // Consulta para obtener los datos del usuario
-    $queryUsuario = "SELECT NOMBRE, EMAIL, FOTO FROM usuario WHERE ID_USUARIO = ?";
-    $stmtUsuario = $conex->prepare($queryUsuario);
-    $stmtUsuario->bind_param("i", $idUsuario);
-    $stmtUsuario->execute();
-    $resultUsuario = $stmtUsuario->get_result();
+    // Consultar la base de datos para obtener los datos del usuario
+    $query = "SELECT NOMBRE, EMAIL, FOTO FROM usuario WHERE ID_USUARIO = ?";
+    if ($stmt = $conex->prepare($query)) { // Usar $conex en lugar de $conn
+        $stmt->bind_param('i', $idUsuario);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    if ($resultUsuario->num_rows > 0) {
-        $usuario = $resultUsuario->fetch_assoc();
+        if ($result->num_rows > 0) {
+            $usuario = $result->fetch_assoc();
+        } else {
+            echo "No se encontraron datos del usuario.";
+            exit;
+        }
+        $stmt->close();
     } else {
-        echo "No se encontraron datos del usuario.";
-        exit;
+        die("Error al preparar la consulta: " . $conex->error);
     }
-    $stmtUsuario->close();
 } else {
-    // Redirigir al login si no hay sesión activa
+    // Redirigir al login si no hay sesión o no es alumno
     header('Location: login.php');
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

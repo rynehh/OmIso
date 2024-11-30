@@ -5,6 +5,19 @@ session_start();
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $curso_id = intval($_GET['id']); // Convertir a entero para mayor seguridad
 
+    // Verificar si el usuario compró el curso
+    $sqlCompra = $conex->prepare("SELECT ID_USUARIO FROM usuario_curso WHERE ID_CURSO = ? AND ID_USUARIO = ?");
+    $sqlCompra->bind_param("ii", $curso_id, $_SESSION['idUsuario']);
+    $sqlCompra->execute();
+    $resultCompra = $sqlCompra->get_result();
+
+    if ($resultCompra->num_rows == 0) {
+        // Si no se encuentra la compra, redirigir al inicio
+        header("Location: inicio.php");
+        exit;
+    }
+    $sqlCompra->close();
+
     // Obtener detalles del curso
     $sqlCurso = $conex->prepare("SELECT TITULO, DESCRIPCURSO, IMAGEN FROM CURSO WHERE ID_CURSO = ?");
     $sqlCurso->bind_param("i", $curso_id);
@@ -49,6 +62,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     exit;
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
